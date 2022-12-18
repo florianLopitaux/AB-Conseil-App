@@ -1,4 +1,5 @@
 from typing import Self
+import os
 import json
 import customtkinter
 
@@ -12,6 +13,9 @@ class Settings:
     def __init__(self):
         if (Settings.__INSTANCE is None):
             self.__appearance_mode, self.__color_theme = self.__load_configuration()
+
+            customtkinter.set_appearance_mode(self.__appearance_mode)
+            customtkinter.set_default_color_theme(self.__color_theme)
     
 
     # GETTERS
@@ -37,15 +41,23 @@ class Settings:
 
 
     # METHODS
-    def __load_configuration() -> tuple[str, str]:
+    def __load_configuration(self) -> tuple[str, str]:
+        jons_file = None
+
+        try:
+            json_file = open(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", "app-configuration.json"))
+        except OSError:
+            print("Error ! Can't open the json configuration file")
+
         json_configuration = None
 
         try:
-            json_configuration =  json.loads("../../assets/app-configuration.json")
+            json_configuration =  json.load(json_file)
         except json.JSONDecodeError:
-            print("Error ! Can't decode json configuration file")
+            print("Error ! Can't read/decode json configuration file")
 
-        return json_configuration['appearance_mode'], json_configuration["color_theme"]
+        json_file.close()
+        return json_configuration['appearance_mode'], json_configuration['color_theme']
 
 
     # STATIC METHODS
