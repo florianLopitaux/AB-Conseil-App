@@ -11,12 +11,12 @@ class App(customtkinter.CTk):
         self.title = "AB Conseil app"
         self.resizable = False
 
+        Settings()
 
 
     # METHODS
     def run(self) -> None:
         self.mainloop()
-
 
 
 if __name__ == "__main__":
