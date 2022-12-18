@@ -1,6 +1,8 @@
 import customtkinter
 
 from data.settings import Settings
+from gui.home_frame import HomeFrame
+
 
 
 class App(customtkinter.CTk):
@@ -10,12 +12,17 @@ class App(customtkinter.CTk):
         self.title = "AB Conseil app"
         self.resizable = False
 
+        # create instance of Settings class and load data from the json configuration file
         Settings()
+
+        self.__container = HomeFrame(self)
+
 
 
     # METHODS
     def run(self) -> None:
         self.mainloop()
+
 
 
 if __name__ == "__main__":
