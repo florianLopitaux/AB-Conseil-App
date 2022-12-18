@@ -4,6 +4,7 @@ import json
 import customtkinter
 
 
+
 class Settings:
     """
     SUMMARY
@@ -30,6 +31,7 @@ class Settings:
     """
     # STATIC ATTRIBUTE
     __INSTANCE = None
+    __PATH_JSON_CONFIGURATION_FILE = os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", "app-configuration.json")
 
 
     # CONSTRUCTOR
@@ -39,7 +41,8 @@ class Settings:
 
             customtkinter.set_appearance_mode(self.__appearance_mode)
             customtkinter.set_default_color_theme(self.__color_theme)
-    
+
+
 
     # GETTERS
     def get_appearance_mode(self) -> str:
@@ -55,6 +58,7 @@ class Settings:
         """
         return self.__appearance_mode
 
+
     def get_color_theme(self) -> str:
         """
         SUMMARY
@@ -68,6 +72,7 @@ class Settings:
         """
         return self.__color_theme
     
+
 
     # SETTERS
     def set_appearance_mode(self, appearance_mode: str) -> None:
@@ -87,7 +92,10 @@ class Settings:
         assert appearance_mode in ["System", "Dark", "Light"], "Error ! Appearance mode: '" + appearance_mode + "' doesn't exist !"
 
         self.__appearance_mode = appearance_mode
+        self.__saveData()
+
         customtkinter.set_appearance_mode(appearance_mode)
+
 
     def set_color_theme(self, color_theme: str) -> None:
         """
@@ -106,7 +114,10 @@ class Settings:
         assert color_theme in ["blue", "green"], "Error ! Theme color: '" + color_theme + "' doesn't exist !"
 
         self.__color_theme = color_theme
+        self.__saveData()
+
         customtkinter.set_default_color_theme(color_theme)
+
 
 
     # METHODS
@@ -122,22 +133,29 @@ class Settings:
         -------
         tuple[str, str]: The two values stored in the json configuration file (appearance mode and color theme).
         """
-        jons_file = None
-
-        try:
-            json_file = open(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", "app-configuration.json"))
-        except OSError:
-            print("Error ! Can't open the json configuration file")
-
         json_configuration = None
 
         try:
-            json_configuration =  json.load(json_file)
+            with open(Settings.__PATH_JSON_CONFIGURATION_FILE) as json_file:
+                json_configuration =  json.load(json_file)
+
+        except FileNotFoundError:
+            print("Error ! Can't open the json configuration file")
         except json.JSONDecodeError:
             print("Error ! Can't read/decode json configuration file")
 
-        json_file.close()
         return json_configuration['appearance_mode'], json_configuration['color_theme']
+
+
+    def __saveData(self) -> None:
+        json_str_format = {'appearance_mode': self.__appearance_mode, 'color_theme': self.__color_theme}
+
+        try:
+            with open(Settings.__PATH_JSON_CONFIGURATION_FILE, 'w') as file_out:
+                json.dump(json_str_format, file_out)
+        except FileNotFoundError:
+            print("Error ! Can't open the json configuration file")
+
 
 
     # STATIC METHODS
