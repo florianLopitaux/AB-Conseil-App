@@ -127,7 +127,7 @@ class Settings:
         -------
         This private method is called only once on the constructor of this class.
         It loads and reads the data storec on the json configuration file and return them.
-        If the method can't open the file or decode the content, it raise an error with a message error box to the user.
+        If the method can't open the file or decode the content, it raises an error with a message box to the user.
 
         RETURNS
         -------
@@ -148,11 +148,18 @@ class Settings:
 
 
     def __saveData(self) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is called by the setters to save new data on the json configuration file.
+        If the method can't open the json configuration file, it raises an error with a message box to the user.
+        """
         json_str_format = {'appearance_mode': self.__appearance_mode, 'color_theme': self.__color_theme}
 
         try:
             with open(Settings.__PATH_JSON_CONFIGURATION_FILE, 'w') as file_out:
                 json.dump(json_str_format, file_out)
+
         except FileNotFoundError:
             print("Error ! Can't open the json configuration file")
 
