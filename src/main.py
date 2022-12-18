@@ -1,7 +1,7 @@
 import customtkinter
 
 from data.settings import Settings
-from gui.home_frame import HomeFrame
+from gui.home_view import HomeView
 
 
 
@@ -9,13 +9,13 @@ class App(customtkinter.CTk):
     # CONSTRUCTOR
     def __init__(self):
         super().__init__()
-        self.title = "AB Conseil app"
-        self.resizable = False
+        self.title("AB Conseil application")
+        self.resizable(False, False)
 
         # create instance of Settings class and load data from the json configuration file
         Settings()
 
-        self.__container = HomeFrame(self)
+        self.__view = HomeView(self)
 
 
 
