@@ -1,4 +1,5 @@
 from typing import Self
+import json
 import customtkinter
 
 
@@ -37,7 +38,14 @@ class Settings:
 
     # METHODS
     def __load_configuration() -> tuple[str, str]:
-        pass
+        json_configuration = None
+
+        try:
+            json_configuration =  json.loads("../../assets/app-configuration.json")
+        except json.JSONDecodeError:
+            print("Error ! Can't decode json configuration file")
+
+        return json_configuration['appearance_mode'], json_configuration["color_theme"]
 
 
     # STATIC METHODS
