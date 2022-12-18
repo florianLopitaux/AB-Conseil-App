@@ -1,10 +1,16 @@
+from typing import Self
 import customtkinter
 
 
 class Settings:
+    # STATIC ATTRIBUTE
+    __INSTANCE = None
+
+
     # CONSTRUCTOR
     def __init__(self):
-        pass
+        if (Settings.__INSTANCE is None):
+            self.__appearance_mode, self.__color_theme = self.__load_configuration()
     
 
     # GETTERS
@@ -27,3 +33,17 @@ class Settings:
 
         self.__color_theme = color_theme
         customtkinter.set_default_color_theme(color_theme)
+
+
+    # METHODS
+    def __load_configuration() -> tuple[str, str]:
+        pass
+
+
+    # STATIC METHODS
+    @staticmethod
+    def get_instance() -> Self:
+        if (Settings.__INSTANCE is None):
+            return Settings()
+        else:
+            return Settings.__INSTANCE

@@ -1,4 +1,7 @@
+import sys
 import customtkinter
+
+from data.settings import Settings
 
 
 class App(customtkinter.CTk):
@@ -17,5 +20,7 @@ class App(customtkinter.CTk):
 
 
 if __name__ == "__main__":
+    sys.path.append("../data")
+
     app = App()
     app.run()
