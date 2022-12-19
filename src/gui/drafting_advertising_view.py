@@ -57,14 +57,34 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         -------
         This private method is used to create all buttons widgets in the view.
         """
-        remove_parameter_button = customtkinter.CTkButton(master=self, text="Remove parameter")
+        remove_parameter_button = customtkinter.CTkButton(master=self, command=self.__command_delete, text="Remove parameter")
         remove_parameter_button.grid(row=2, column=1, padx=6, pady=15)
 
-        add_parameter_button = customtkinter.CTkButton(master=self, text="Add parameter")
+        add_parameter_button = customtkinter.CTkButton(master=self, command=self.__command_append, text="Add parameter")
         add_parameter_button.grid(row=2, column=2, padx=(6, 30), pady=15)
 
         back_button = create_red_button(self, "Back to Menu")
+        back_button.configure(command=self.__command_back)
         back_button.grid(row=3, column=0, columnspan=2, pady=(30, 15))
 
         validate_button = create_green_button(self, "Validate")
+        validate_button.configure(command=self.__command_validate)
         validate_button.grid(row=3, column=1, columnspan=2, pady=(30, 15))
+
+
+
+    # BUTTONS FUNCTION
+    def __command_delete(self) -> None:
+        pass
+
+
+    def __command_append(self) -> None:
+        pass
+
+
+    def __command_back(self) -> None:
+        pass
+
+    
+    def __command_validate(self) -> None:
+        pass
