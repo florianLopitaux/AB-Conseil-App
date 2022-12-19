@@ -8,6 +8,16 @@ from gui.generic_gui import *
 class ConfigurationView(customtkinter.CTkFrame):
     # CONSTRUCTOR
     def __init__(self, container: customtkinter.CTkFrame):
+        """
+        SUMMARY
+        -------
+        This constructor builds the frame and all widgets inside.
+
+        ARGUMENTS
+        ---------
+            container : customtkinter.CTkFrame
+                The frame (master) that contains the configuration view.
+        """
         super().__init__(master=container)
         self.pack(pady=(70, 0), ipadx=100)
 
