@@ -1,6 +1,8 @@
 import os
 import customtkinter
 
+from gui.generic_gui import create_red_button, create_green_button
+
 
 
 class DraftingAdvertisingView(customtkinter.CTkFrame):
@@ -15,6 +17,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
         self.__build_label_and_text()
         self.__build_options()
+        self.__build_buttons()
 
 
 
@@ -61,3 +64,25 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
             if (".xlsx" in file or ".xls" in file)])
 
         self.__excel_file_combo_box.grid(row=0, column=1, columnspan=2)
+
+        self.__parameters_list = customtkinter.CTkOptionMenu(master=self)
+        self.__parameters_list.grid(row=2, column=0)
+
+
+    def __build_buttons(self) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is used to create all buttons widgets in the view.
+        """
+        remove_parameter_button = customtkinter.CTkButton(master=self, text="Remove parameter")
+        remove_parameter_button.grid(row=2, column=1)
+
+        add_parameter_button = customtkinter.CTkButton(master=self, text="Add parameter")
+        add_parameter_button.grid(row=2, column=2)
+
+        back_button = create_red_button(self, "Back to Menu")
+        back_button.grid(row=3, column=0, columnspan=2)
+
+        validate_button = create_green_button(self, "Validate")
+        validate_button.grid(row=3, column=1, columnspan=2)
