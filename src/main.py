@@ -29,7 +29,8 @@ class App(customtkinter.CTk):
         This method change the application view in terms of the view name that we passed as parameter.
         The name accepted are : 'HOME' and 'DRAFT-ADVERTISE'.
 
-        ARGUMENTS:
+        ARGUMENTS
+        ---------
             view_name : str
                 The name of the new view that we want set.
         """
