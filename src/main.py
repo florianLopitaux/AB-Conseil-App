@@ -40,7 +40,7 @@ class App(customtkinter.CTk):
         """
         SUMMARY
         -------
-        This method launch the application.
+        This method launches the application.
         """
         self.mainloop()
 
