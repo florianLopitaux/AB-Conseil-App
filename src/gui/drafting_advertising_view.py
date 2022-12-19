@@ -2,6 +2,7 @@ import os
 import customtkinter
 
 from gui.generic_gui import *
+from gui.pop_up_parameter import ParameterPopUp
 
 
 
@@ -87,7 +88,13 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
 
     def __command_append(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'add parameter' button when it pressed.
+        It generate a pop-up to add a new parameter to the message.
+        """
+        ParameterPopUp(self)
 
 
     def __command_back(self) -> None:
