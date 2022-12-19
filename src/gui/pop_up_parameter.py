@@ -42,11 +42,12 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         -------
         This private method is called only in the constructor and is used to create all labels descriptor to entries.
         """
-        name_label = customtkinter.CTkLabel(master=self, text="Name :")
-        name_label.grid(row=0, column=0, padx=(40, 10), pady=(30, 10))
+        if not self.__isKeyParameter:
+            name_label = customtkinter.CTkLabel(master=self, text="Name :")
+            name_label.grid(row=0, column=0, padx=(40, 10), pady=(30, 10))
 
-        default_value_label = customtkinter.CTkLabel(master=self, text="Default Value :")
-        default_value_label.grid(row=1, column=0, padx=(40, 10), pady=15)
+            default_value_label = customtkinter.CTkLabel(master=self, text="Default Value :")
+            default_value_label.grid(row=1, column=0, padx=(40, 10), pady=15)
 
         letter_column_label = customtkinter.CTkLabel(master=self, text="Column Letter :")
         letter_column_label.grid(row=2, column=0, padx=(40, 10), pady=10)
@@ -65,11 +66,12 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         -------
         This private method is called only in the constructor and is used to create all entries to get the user input data.
         """
-        self.__name_entry = customtkinter.CTkEntry(master=self)
-        self.__name_entry.grid(row=0, column=1, sticky="ew", padx=(10, 40), pady=(30, 10))
+        if not self.__isKeyParameter:
+            self.__name_entry = customtkinter.CTkEntry(master=self)
+            self.__name_entry.grid(row=0, column=1, sticky="ew", padx=(10, 40), pady=(30, 10))
 
-        self.__default_value_entry = customtkinter.CTkEntry(master=self)
-        self.__default_value_entry.grid(row=1, column=1, sticky="ew", padx=(10, 40), pady=15)
+            self.__default_value_entry = customtkinter.CTkEntry(master=self)
+            self.__default_value_entry.grid(row=1, column=1, sticky="ew", padx=(10, 40), pady=15)
 
         self.__letter_column_entry = customtkinter.CTkEntry(master=self)
         self.__letter_column_entry.grid(row=2, column=1, sticky="ew", padx=(10, 40), pady=10)
@@ -94,6 +96,6 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         self.destroy()
 
         if self.__isKeyParameter:
-            launch_messages_wave(self.__parent)
+            launch_messages_wave(self.__parent, (self.__letter_column_entry.get(), self.__start_row_entry.getint(), self.__end_row_entry.getint()))
         else:
             self.__parent.add_parameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())

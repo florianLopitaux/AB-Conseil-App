@@ -31,7 +31,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
 
 
-    # GETTER
+    # GETTERS
     def get_parameters(self) -> dict[str, tuple[str, str]]:
         """
         SUMMARY
@@ -46,6 +46,32 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
                                             value => default_value, letter_column
         """
         return self.__parameters_list
+
+
+    def get_message(self) -> str:
+        """
+        SUMMARY
+        -------
+        This method is the getter of the text in the message text box.
+
+        RETURNS
+        -------
+        str: The message writes by the user.
+        """
+        return self.__message_text_box.get("1.0", customtkinter.END)
+
+
+    def get_excel_file(self) -> str:
+        """
+        SUMMARY
+        -------
+        This method is the getter of the excel file which contains all data.
+
+        RETRUNS
+        -------
+        str: The name of the excel file.
+        """
+        return self.__excel_file_combo_box.get()    
 
 
 
