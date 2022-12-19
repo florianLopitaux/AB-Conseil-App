@@ -9,6 +9,16 @@ from gui.pop_up_parameter import ParameterPopUp
 class DraftingAdvertisingView(customtkinter.CTkFrame):
     # CONSTRUCTOR
     def __init__(self, app: customtkinter.CTk):
+        """
+        SUMMARY
+        -------
+        This constructor builds the frame and all widgets inside.
+
+        ARGUMENTS
+        ---------
+            app : customtkinter.CTk
+                The window of the application.
+        """
         super().__init__(master=app)
         self.pack(padx=35, pady=35)
 
@@ -21,12 +31,30 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
 
 
-    # SETTER
-    def addParameter(self, parameter_name: str, default_value: str, letter_column: str) -> None:
+    # GETTER
+    def get_parameters(self) -> dict[str, tuple[str, str]]:
         """
         SUMMARY
         -------
-        This private method is the setter of the 'parameters_list' attribute.
+        This method is the getter of the 'parameters_list' attribute.
+        The attribute stores all parameters register by the user.
+
+        RETURNS
+        -------
+        dict[str, tuple[str, str]]: The dictionary that contains all parameters.
+                                    Format: key => parameter_name
+                                            value => default_value, letter_column
+        """
+        return self.__parameters_list
+
+
+
+    # SETTER
+    def add_parameter(self, parameter_name: str, default_value: str, letter_column: str) -> None:
+        """
+        SUMMARY
+        -------
+        This method is the setter of the 'parameters_list' attribute.
         It append the new parameter to the attribute and update the parameters option menu.
 
         ARGUMENTS
@@ -130,4 +158,8 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
     
     def __command_validate(self) -> None:
-        pass
+        """
+        This private method is the function linked with the 'validate' button when it pressed.
+        It launch the pop-up parameter to phone number (special data to inform) before starting the send messages wave.
+        """
+        ParameterPopUp(self, True)
