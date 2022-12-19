@@ -1,5 +1,8 @@
 import customtkinter
 
+from generic_gui import clear_widgets
+from configuration_view import ConfigurationView
+
 
 
 class HomeView(customtkinter.CTkFrame):
@@ -8,7 +11,7 @@ class HomeView(customtkinter.CTkFrame):
         """
         SUMMARY
         -------
-        This constructor
+        This constructor builds the frame and all widgets inside.
 
         ARGUMENTS
         ---------
@@ -58,7 +61,14 @@ class HomeView(customtkinter.CTkFrame):
 
 
     def __command_settings(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This method is the function linked with the 'settings' button when it pressed.
+        It clears the currently content of the button frame and load the configuration view.
+        """
+        clear_widgets(self.__container)
+        self.__container = ConfigurationView(self.__app)
 
 
     def __command_exit(self) -> None:
