@@ -64,7 +64,7 @@ class HomeView(customtkinter.CTkFrame):
         """
         SUMMARY
         -------
-        This method is the function linked with the 'settings' button when it pressed.
+        This private method is the function linked with the 'settings' button when it pressed.
         It clears the currently content of the button frame and load the configuration view.
         """
         clear_widgets(self.__container)
@@ -75,7 +75,7 @@ class HomeView(customtkinter.CTkFrame):
         """
         SUMMARY
         -------
-        This method is the function linked with the 'exit' button when it pressed.
+        This private method is the function linked with the 'exit' button when it pressed.
         It closes the window and quits the application.
         """
         self.__app.destroy()
