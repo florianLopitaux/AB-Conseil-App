@@ -185,7 +185,7 @@ class Settings:
         """
         try:
             with open(Settings.__PATH_JSON_CONFIGURATION_FILE, 'w') as file_out:
-                json.dump(self.__json_configuration, file_out)
+                json.dump(self.__json_configuration, file_out, indent=4)
 
         except FileNotFoundError:
             print("Error ! Can't open the json configuration file")
