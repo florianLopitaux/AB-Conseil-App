@@ -23,6 +23,10 @@ class App(customtkinter.CTk):
     # METHODS
     def run(self) -> None:
         self.mainloop()
+    
+
+    def changeView(self, view: customtkinter.CTkFrame) -> None:
+        self.__view = view
 
 
 

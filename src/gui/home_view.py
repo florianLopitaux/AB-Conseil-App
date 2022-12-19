@@ -1,13 +1,15 @@
 import customtkinter
 
+from main import App
 from gui.generic_gui import clear_frame
-from gui.configuration_view import ConfigurationView
+from gui.drafting_advertising_view import DraftingAdvertisingView
+from gui.configuration_frame import ConfigurationView
 
 
 
 class HomeView(customtkinter.CTkFrame):
     # CONSTRUCTOR
-    def __init__(self, app: customtkinter.CTk):
+    def __init__(self, app: App):
         """
         SUMMARY
         -------
@@ -55,7 +57,14 @@ class HomeView(customtkinter.CTkFrame):
 
     # BUTTONS FUNCTION
     def __command_use_app(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'use app' button when it pressed.
+        It clear the currently view and change to the drafting advertising view.
+        """
+        clear_frame(self)
+        self.__app.changeView(DraftingAdvertisingView())
 
 
     def __command_settings(self) -> None:
