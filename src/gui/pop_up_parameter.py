@@ -20,12 +20,16 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         super().__init__()
         self.title("Add new parameter")
         self.__parent = parent
+        self.__isKeyParameter = isKeyParameter
 
         self.__build_labels()
         self.__build_entries()
 
         buttonRegister = customtkinter.CTkButton(master=self, command=self.__command_register, text="Register")
-        buttonRegister.grid(row=3, column=0, columnspan=2, pady=(30, 20))
+        if self.__isKeyParameter:
+            buttonRegister.grid(row=5, column=0, columnspan=2, pady=(30, 20))
+        else:
+            buttonRegister.grid(row=3, column=0, columnspan=2, pady=(30, 20))
 
 
 
@@ -45,6 +49,13 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         letter_column_label = customtkinter.CTkLabel(master=self, text="Column Letter :")
         letter_column_label.grid(row=2, column=0, padx=(40, 10), pady=10)
 
+        if self.__isKeyParameter:
+            start_row_label = customtkinter.CTkLabel(master=self, text="Start Row :")
+            start_row_label.grid(row=3, column=0, padx=(40, 10), pady=15)
+
+            end_row_label = customtkinter.CTkLabel(master=self, text="End Row :")
+            end_row_label.grid(row=4, column=0, padx=(40, 10), pady=10)
+
     
     def __build_entries(self) -> None:
         """
@@ -61,6 +72,13 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         self.__letter_column_entry = customtkinter.CTkEntry(master=self)
         self.__letter_column_entry.grid(row=2, column=1, sticky="ew", padx=(10, 40), pady=10)
 
+        if self.__isKeyParameter:
+            self.__start_row_entry = customtkinter.CTkEntry(master=self)
+            self.__start_row_entry.grid(row=3, column=1, sticky="ew", padx=(10, 40), pady=15)
+
+            self.__end_row_entry = customtkinter.CTkEntry(master=self)
+            self.__end_row_entry.grid(row=4, column=1, sticky="ew", padx=(10, 40), pady=10)
+
 
 
     # BUTTON FUNCTION
@@ -71,5 +89,5 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         This private method is the function linked with the 'register' button when it pressed.
         It adds the new parameter to the drafting advertising view and closes itself.
         """
-        self.__parent.addParameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())
+        self.__parent.add_parameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())
         self.destroy()
