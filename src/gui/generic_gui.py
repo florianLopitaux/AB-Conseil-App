@@ -2,11 +2,11 @@ import customtkinter
 
 
 
-def clear_widgets(container: customtkinter.CTkFrame) -> None:
+def clear_frame(container: customtkinter.CTkFrame) -> None:
     """
     SUMMARY
     -------
-    This function clear all widgets on the container passed as parameter.
+    This function clear all widgets on the container passed as parameter and destroy them.
 
     ARGUMENTS
     ---------
@@ -15,6 +15,8 @@ def clear_widgets(container: customtkinter.CTkFrame) -> None:
     """
     for widget in container.winfo_children():
         widget.destroy()
+    
+    container.destroy()
 
 
 def create_red_button(container: customtkinter.CTkFrame, button_text: str) -> customtkinter.CTkButton:

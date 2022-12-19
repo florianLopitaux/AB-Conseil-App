@@ -15,6 +15,7 @@ class App(customtkinter.CTk):
         # create instance of Settings class and load data from the json configuration file
         Settings()
 
+        # load home view
         self.__view = HomeView(self)
 
 

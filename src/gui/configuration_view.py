@@ -1,7 +1,7 @@
 import customtkinter
 
 from data.settings import Settings
-from generic_gui import create_red_button, create_green_button
+from gui.generic_gui import create_red_button, create_green_button
 
 
 
@@ -47,7 +47,7 @@ class ConfigurationView(customtkinter.CTkFrame):
         self.__options_appearance_mode.grid(row=0, column=0, columnspan=2, pady=(30, 15))
 
         self.__option_colors_theme = customtkinter.CTkOptionMenu(master=self, values=["blue", "green"])
-        self.__option_colors_theme.set(Settings.get_instance().get_colors_theme())
+        self.__option_colors_theme.set(Settings.get_instance().get_color_theme())
         self.__option_colors_theme.grid(row=1, column=0, columnspan=2, pady=15)
 
 

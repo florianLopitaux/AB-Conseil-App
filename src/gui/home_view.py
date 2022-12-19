@@ -1,7 +1,7 @@
 import customtkinter
 
-from generic_gui import clear_widgets
-from configuration_view import ConfigurationView
+from gui.generic_gui import clear_frame
+from gui.configuration_view import ConfigurationView
 
 
 
@@ -27,21 +27,16 @@ class HomeView(customtkinter.CTkFrame):
         title_label.pack(pady=(50, 0))
 
         # buttons
-        self.__buildButtons(app)
+        self.__buildButtons()
 
 
 
     # METHODS
-    def __buildButtons(self, app: customtkinter.CTk) -> None:
+    def __buildButtons(self) -> None:
         """
         SUMMARY
         -------
         This private method is used in the constructor to create and configurate all buttons on this frame.
-
-        ARGUMENTS
-        ---------
-            app : customtkinter.CTk
-                The window of the application
         """
         self.__container = customtkinter.CTkFrame(master=self)
         self.__container.pack(pady=(70, 0), ipadx=100, fill="none", expand=False)
@@ -67,8 +62,8 @@ class HomeView(customtkinter.CTkFrame):
         This private method is the function linked with the 'settings' button when it pressed.
         It clears the currently content of the button frame and load the configuration view.
         """
-        clear_widgets(self.__container)
-        self.__container = ConfigurationView(self.__app)
+        clear_frame(self.__container)
+        self.__container = ConfigurationView(self)
 
 
     def __command_exit(self) -> None:
