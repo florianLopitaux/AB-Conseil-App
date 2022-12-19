@@ -76,7 +76,19 @@ class ConfigurationView(customtkinter.CTkFrame):
         It generates the two buttons widgets of the frame.
         """
         cancel_button = create_red_button(self, "Cancel")
+        cancel_button.configure(command=self.__command_cancel)
         cancel_button.grid(row=4, column=0, pady=(30, 8))
 
         validate_button = create_green_button(self, "Apply")
+        validate_button.configure(command=self.__command_validate)
         validate_button.grid(row=4, column=1, pady=(30, 8))
+
+
+
+    # BUTTONS FUNCTION
+    def __command_cancel(self) -> None:
+        pass
+
+
+    def __command_validate(self) -> None:
+        pass

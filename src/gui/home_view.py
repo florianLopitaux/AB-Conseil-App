@@ -51,6 +51,8 @@ class HomeView(customtkinter.CTkFrame):
         button_exit.pack(pady=(10, 50))
 
 
+
+    # BUTTONS FUNCTION
     def __command_use_app(self) -> None:
         pass
 
