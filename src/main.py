@@ -20,13 +20,29 @@ class App(customtkinter.CTk):
 
 
 
+    # SETTER
+    def changeView(self, view: customtkinter.CTkFrame) -> None:
+        """
+        SUMMARY
+        -------
+        This method is the setter to the 'view' attribute.
+
+        ARGUMENTS:
+            view : customtkinter.CTkFrame
+                The new view that we want set.
+        """
+        self.__view = view
+
+
+
     # METHODS
     def run(self) -> None:
+        """
+        SUMMARY
+        -------
+        This method launch the application.
+        """
         self.mainloop()
-    
-
-    def changeView(self, view: customtkinter.CTkFrame) -> None:
-        self.__view = view
 
 
 
