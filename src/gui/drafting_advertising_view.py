@@ -47,6 +47,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         self.__excel_file_combo_box.grid(row=0, column=1, columnspan=2, sticky="ew", padx=(0, 30), pady=(30, 15))
 
         self.__parameters_list = customtkinter.CTkOptionMenu(master=self, values=[])
+        self.__parameters_list.set("parameters list")
         self.__parameters_list.grid(row=2, column=0, padx=(30, 6), pady=15)
 
 
