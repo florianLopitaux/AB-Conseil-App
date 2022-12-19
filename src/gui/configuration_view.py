@@ -14,6 +14,7 @@ class ConfigurationView(customtkinter.CTkFrame):
         self.__configure_grid()
 
         self.__build_options_menu()
+        self.__build_radio_buttons_section()
 
 
 
@@ -46,3 +47,20 @@ class ConfigurationView(customtkinter.CTkFrame):
         self.__option_colors_theme = customtkinter.CTkOptionMenu(master=self, values=["blue", "green"])
         self.__option_colors_theme.set(Settings.get_instance().get_colors_theme())
         self.__option_colors_theme.grid(row=1, column=0, columnspan=2, pady=15)
+
+
+    def __build_radio_buttons_section(self) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is called only in the constructor.
+        It generates the two radio buttons widgets and corresponding section label of the frame.
+        """
+        desc_radio_buttons = customtkinter.CTkLabel(master=self, text="Phone number format")
+        desc_radio_buttons.grid(row=2, column=0, columnspan=2, pady=(15, 5))
+
+        radioButton06 = customtkinter.CTkRadioButton(master=self, text="06...", value=0)
+        radioButton06.grid(row=3, column=0, pady=(5, 15))
+
+        radioButton33 = customtkinter.CTkRadioButton(master=self, text="+33...", value=1)
+        radioButton33.grid(row=3, column=1, pady=(5, 15))
