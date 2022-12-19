@@ -1,16 +1,19 @@
 import customtkinter
 
 from data.settings import Settings
-from gui.generic_gui import create_red_button, create_green_button
+from gui.generic_gui import *
 
 
 
 class ConfigurationView(customtkinter.CTkFrame):
     # CONSTRUCTOR
-    def __init__(self, app: customtkinter.CTk):
-        super().__init__(master=app)
+    def __init__(self, container: customtkinter.CTkFrame):
+        super().__init__(master=container)
         self.pack(pady=(70, 0), ipadx=100)
-        self.__app = app
+
+        self.__container = container
+        self.__current_appearance_mode = Settings.get_instance().get_appearance_mode()
+        self.__current_color_theme = Settings.get_instance().get_color_theme()
 
         self.__configure_grid()
 
@@ -87,7 +90,14 @@ class ConfigurationView(customtkinter.CTkFrame):
 
     # BUTTONS FUNCTION
     def __command_cancel(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'cancel' button when it pressed.
+        It destroy this view and rebuild the home view without save changes.
+        """
+        clear_frame(self)
+        self.__container.build_buttons()
 
 
     def __command_validate(self) -> None:

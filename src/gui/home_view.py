@@ -27,16 +27,16 @@ class HomeView(customtkinter.CTkFrame):
         title_label.pack(pady=(50, 0))
 
         # buttons
-        self.__buildButtons()
+        self.build_buttons()
 
 
 
     # METHODS
-    def __buildButtons(self) -> None:
+    def build_buttons(self) -> None:
         """
         SUMMARY
         -------
-        This private method is used in the constructor to create and configurate all buttons on this frame.
+        This method is used to create and configurate all buttons on this view.
         """
         self.__container = customtkinter.CTkFrame(master=self)
         self.__container.pack(pady=(70, 0), ipadx=100, fill="none", expand=False)
