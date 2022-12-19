@@ -12,6 +12,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         self.pack(padx=35, pady=35)
 
         self.__app = app
+        self.__parameters_list = dict()
 
         self.__build_label_and_text()
         self.__build_options()
@@ -46,9 +47,9 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         self.__excel_file_combo_box.set("")
         self.__excel_file_combo_box.grid(row=0, column=1, columnspan=2, sticky="ew", padx=(0, 30), pady=(30, 15))
 
-        self.__parameters_list = customtkinter.CTkOptionMenu(master=self, values=[])
-        self.__parameters_list.set("parameters list")
-        self.__parameters_list.grid(row=2, column=0, padx=(30, 6), pady=15)
+        self.__parameters_option_menu = customtkinter.CTkOptionMenu(master=self, values=self.__parameters_list)
+        self.__parameters_option_menu.set("parameters list")
+        self.__parameters_option_menu.grid(row=2, column=0, padx=(30, 6), pady=15)
 
 
     def __build_buttons(self) -> None:
@@ -75,7 +76,14 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
     # BUTTONS FUNCTION
     def __command_delete(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'remove parameter' button when it pressed.
+        It delete the parameter selectioned in the option parameter menu.
+        """
+        if self.__parameters_list.pop(self.__parameters_option_menu.get(), None) is not None:
+            self.__parameters_option_menu.set("parameters list")
 
 
     def __command_append(self) -> None:
