@@ -1,6 +1,7 @@
 import customtkinter
 
 from data.settings import Settings
+from generic_gui import create_red_button, create_green_button
 
 
 
@@ -15,6 +16,7 @@ class ConfigurationView(customtkinter.CTkFrame):
 
         self.__build_options_menu()
         self.__build_radio_buttons_section()
+        self.__build_buttons()
 
 
 
@@ -64,3 +66,17 @@ class ConfigurationView(customtkinter.CTkFrame):
 
         radioButton33 = customtkinter.CTkRadioButton(master=self, text="+33...", value=1)
         radioButton33.grid(row=3, column=1, pady=(5, 15))
+
+
+    def __build_buttons(self) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is called only in the constructor.
+        It generates the two buttons widgets of the frame.
+        """
+        cancel_button = create_red_button(self, "Cancel")
+        cancel_button.grid(row=4, column=0, pady=(30, 8))
+
+        validate_button = create_green_button(self, "Apply")
+        validate_button.grid(row=4, column=1, pady=(30, 8))
