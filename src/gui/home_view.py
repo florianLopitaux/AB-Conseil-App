@@ -62,4 +62,10 @@ class HomeView(customtkinter.CTkFrame):
 
 
     def __command_exit(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This method is the function linked with the 'exit' button when it pressed.
+        It closes the window and quits the application.
+        """
+        self.__app.destroy()
