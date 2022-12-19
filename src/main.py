@@ -2,6 +2,7 @@ import customtkinter
 
 from data.settings import Settings
 from gui.home_view import HomeView
+from gui.drafting_advertising_view import DraftingAdvertisingView
 
 
 
@@ -20,22 +21,25 @@ class App(customtkinter.CTk):
 
 
 
-    # SETTER
-    def changeView(self, view: customtkinter.CTkFrame) -> None:
+    # METHODS
+    def change_view(self, view_name: str) -> None:
         """
         SUMMARY
         -------
-        This method is the setter to the 'view' attribute.
+        This method change the application view in terms of the view name that we passed as parameter.
+        The name accepted are : 'HOME' and 'DRAFT-ADVERTISE'.
 
         ARGUMENTS:
-            view : customtkinter.CTkFrame
-                The new view that we want set.
+            view_name : str
+                The name of the new view that we want set.
         """
-        self.__view = view
+        match view_name:
+            case "HOME":
+                self.__view = HomeView(self)
+            case "DRAFT-ADVERTISE":
+                self.__view = DraftingAdvertisingView(self)
 
 
-
-    # METHODS
     def run(self) -> None:
         """
         SUMMARY

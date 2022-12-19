@@ -1,7 +1,6 @@
 import customtkinter
 
 from gui.generic_gui import clear_frame
-from gui.drafting_advertising_view import DraftingAdvertisingView
 from gui.configuration_frame import ConfigurationView
 
 
@@ -76,7 +75,7 @@ class HomeView(customtkinter.CTkFrame):
         It clear the currently view and change to the drafting advertising view.
         """
         clear_frame(self)
-        self.__app.changeView(DraftingAdvertisingView(self.__app))
+        self.__app.change_view('DRAFT-ADVERTISE')
 
 
     def __command_settings(self) -> None:

@@ -1,7 +1,7 @@
 import os
 import customtkinter
 
-from gui.generic_gui import create_red_button, create_green_button
+from gui.generic_gui import *
 
 
 
@@ -83,7 +83,14 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
 
     def __command_back(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'back to menu' button when it pressed.
+        It destroy this current view and rebuild a new home view.
+        """
+        clear_frame(self)
+        self.__app.change_view('HOME')
 
     
     def __command_validate(self) -> None:
