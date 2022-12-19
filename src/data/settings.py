@@ -15,6 +15,10 @@ class Settings:
 
     METHODS
     -------
+        CONSTRUCTOR
+        -----------
+        - Settings()
+
         GETTERS
         -------
         - get_appearance_mode() -> str

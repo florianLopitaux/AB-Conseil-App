@@ -8,6 +8,19 @@ from gui.configuration_frame import ConfigurationView
 
 
 class HomeView(customtkinter.CTkFrame):
+    """
+    SUMMARY
+    -------
+    This class manage the home view of the application.
+
+    METHODS
+    -------
+    - build_buttons() -> None
+
+        CONSTRUCTOR
+        -----------
+        - HomeView(app: App)
+    """
     # CONSTRUCTOR
     def __init__(self, app: App):
         """

@@ -6,6 +6,20 @@ from gui.generic_gui import *
 
 
 class ConfigurationView(customtkinter.CTkFrame):
+    """
+    SUMMARY
+    -------
+    This class is the frame that manage all user interface with application settings.
+    It called in the home view with the 'settings' button.
+    If the user pressed the 'cancel' button all changes will not be taken into account.
+    Conversely, if he presses the 'apply' button.
+
+    METHODS
+    -------
+        CONSTRUCTOR
+        -----------
+        - ConfigurationView(container: customtkinter.CTkFrame)
+    """
     # CONSTRUCTOR
     def __init__(self, container: customtkinter.CTkFrame):
         """
