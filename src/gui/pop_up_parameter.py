@@ -25,8 +25,8 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         default_value_label = customtkinter.CTkLabel(master=self, text="Default Value :")
         default_value_label.grid(row=1, column=0, padx=(40, 10), pady=15)
 
-        column_letter_label = customtkinter.CTkLabel(master=self, text="Column Letter :")
-        column_letter_label.grid(row=2, column=0, padx=(40, 10), pady=10)
+        letter_column_label = customtkinter.CTkLabel(master=self, text="Column Letter :")
+        letter_column_label.grid(row=2, column=0, padx=(40, 10), pady=10)
 
     
     def __build_entries(self) -> None:
@@ -36,11 +36,12 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         self.__default_value_entry = customtkinter.CTkEntry(master=self)
         self.__default_value_entry.grid(row=1, column=1, sticky="ew", padx=(10, 40), pady=15)
 
-        self.__column_letter_entry = customtkinter.CTkEntry(master=self)
-        self.__column_letter_entry.grid(row=2, column=1, sticky="ew", padx=(10, 40), pady=10)
+        self.__letter_column_entry = customtkinter.CTkEntry(master=self)
+        self.__letter_column_entry.grid(row=2, column=1, sticky="ew", padx=(10, 40), pady=10)
 
 
 
     # BUTTON FUNCTION
     def __command_register(self) -> None:
-        pass
+        self.__parent.addParameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())
+        self.destroy()

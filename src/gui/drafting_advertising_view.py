@@ -21,6 +21,27 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
 
 
+    # SETTER
+    def addParameter(self, parameter_name: str, default_value: str, letter_column: str) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is the setter of the 'parameters_list' attribute.
+        It append the new parameter to the attribute and update the parameters option menu.
+
+        ARGUMENTS
+        ---------
+            - parameter_name : str
+                The name of the parameter which must correspond with those written in the text.
+            - default_value : str
+                The default value of the parameter if the data is missing in the excel file.
+            - letter_column : str
+                The letter column of the parameter corresponding in the excel file.
+        """
+        self.__parameters_list[parameter_name] = letter_column, default_value
+        self.__parameters_option_menu.configure(values=self.__parameters_list)
+
+
     # METHODS
     def __build_label_and_text(self) -> None:
         """
