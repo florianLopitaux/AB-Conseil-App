@@ -1,5 +1,7 @@
 import customtkinter
 
+from data.whatsapp_manager import launch_messages_wave
+
 
 
 class ParameterPopUp(customtkinter.CTkToplevel):
@@ -89,5 +91,9 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         This private method is the function linked with the 'register' button when it pressed.
         It adds the new parameter to the drafting advertising view and closes itself.
         """
-        self.__parent.add_parameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())
         self.destroy()
+
+        if self.__isKeyParameter:
+            launch_messages_wave(self.__parent)
+        else:
+            self.__parent.add_parameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())
