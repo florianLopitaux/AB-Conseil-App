@@ -19,11 +19,13 @@ class Settings:
         -------
         - get_appearance_mode() -> str
         - get_color_theme() -> str
+        - get_phone_format() -> str
 
         SETTERS
         -------
         - set_appearance_mode(appearance_mode: str) -> None
         - set_color_theme(color_theme: str) -> None
+        - set_phone_format(phone_format: str) -> None
 
         STATIC
         ------
@@ -36,11 +38,26 @@ class Settings:
 
     # CONSTRUCTOR
     def __init__(self):
+        """
+        SUMMARY
+        -------
+        This constructor loads and reads the data stored on the json configuration file.
+        If the method can't open the file or decode the content, it raises an error with a message box to the user.
+        """
         if (Settings.__INSTANCE is None):
-            self.__appearance_mode, self.__color_theme = self.__load_configuration()
+            self.__json_configuration = None
 
-            customtkinter.set_appearance_mode(self.__appearance_mode)
-            customtkinter.set_default_color_theme(self.__color_theme)
+            try:
+                with open(Settings.__PATH_JSON_CONFIGURATION_FILE) as json_file:
+                    self.__json_configuration =  json.load(json_file)
+
+            except FileNotFoundError:
+                print("Error ! Can't open the json configuration file")
+            except json.JSONDecodeError:
+                print("Error ! Can't read/decode json configuration file")
+
+            customtkinter.set_appearance_mode(self.__json_configuration['appearance_mode'])
+            customtkinter.set_default_color_theme(self.__json_configuration['color_theme'])
 
 
 
@@ -56,7 +73,7 @@ class Settings:
         -------
         str: The currently appearance mode of the application.
         """
-        return self.__appearance_mode
+        return self.__json_configuration['appearance_mode']
 
 
     def get_color_theme(self) -> str:
@@ -70,8 +87,22 @@ class Settings:
         -------
         str: The currently color theme of the application.
         """
-        return self.__color_theme
+        return self.__json_configuration['color_theme']
     
+
+    def get_phone_format(self) -> str:
+        """
+        SUMMARY
+        -------
+        This method is the getter to the 'phone_format' attribute.
+        The attribute stores the string value of the currently phone format of the application.
+
+        RETURNS
+        -------
+        str: The currently phone format of the application.
+        """
+        return self.__json_configuration['phone_format']
+
 
 
     # SETTERS
@@ -91,7 +122,7 @@ class Settings:
         """
         assert appearance_mode in ["System", "Dark", "Light"], "Error ! Appearance mode: '" + appearance_mode + "' doesn't exist !"
 
-        self.__appearance_mode = appearance_mode
+        self.__json_configuration['appearance_mode'] = appearance_mode
         self.__saveData()
 
         customtkinter.set_appearance_mode(appearance_mode)
@@ -113,40 +144,34 @@ class Settings:
         """
         assert color_theme in ["blue", "green"], "Error ! Theme color: '" + color_theme + "' doesn't exist !"
 
-        self.__color_theme = color_theme
+        self.__json_configuration['color_theme'] = color_theme
         self.__saveData()
 
         customtkinter.set_default_color_theme(color_theme)
 
 
-
-    # METHODS
-    def __load_configuration(self) -> tuple[str, str]:
+    def set_phone_format(self, phone_format: str) -> None:
         """
         SUMMARY
         -------
-        This private method is called only once on the constructor of this class.
-        It loads and reads the data storec on the json configuration file and return them.
-        If the method can't open the file or decode the content, it raises an error with a message box to the user.
+        This method is the setter to the 'phone_format' attribute.
+        The setter stores also the new value choose on the json configuration file.
+        The argument has only 2 possibilities : '06', '+33'.
+        If the argument doesn't 2 of them, an AssertionError is thrown.
 
-        RETURNS
-        -------
-        tuple[str, str]: The two values stored in the json configuration file (appearance mode and color theme).
+        ARGUMENTS
+        ---------
+            phone_format : str
+                The phone format of the application that we want applied.
         """
-        json_configuration = None
+        assert phone_format in ["06", "+33"], "Error ! Phone format: '" + phone_format + "' doesn't exist !"
 
-        try:
-            with open(Settings.__PATH_JSON_CONFIGURATION_FILE) as json_file:
-                json_configuration =  json.load(json_file)
-
-        except FileNotFoundError:
-            print("Error ! Can't open the json configuration file")
-        except json.JSONDecodeError:
-            print("Error ! Can't read/decode json configuration file")
-
-        return json_configuration['appearance_mode'], json_configuration['color_theme']
+        self.__json_configuration['phone_format'] = phone_format
+        self.__saveData()
 
 
+
+    # METHODS
     def __saveData(self) -> None:
         """
         SUMMARY
@@ -154,11 +179,9 @@ class Settings:
         This private method is called by the setters to save new data on the json configuration file.
         If the method can't open the json configuration file, it raises an error with a message box to the user.
         """
-        json_str_format = {'appearance_mode': self.__appearance_mode, 'color_theme': self.__color_theme}
-
         try:
             with open(Settings.__PATH_JSON_CONFIGURATION_FILE, 'w') as file_out:
-                json.dump(json_str_format, file_out)
+                json.dump(self.__json_configuration, file_out)
 
         except FileNotFoundError:
             print("Error ! Can't open the json configuration file")
