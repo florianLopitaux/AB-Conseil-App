@@ -94,7 +94,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         This private method is the function linked with the 'add parameter' button when it pressed.
         It generate a pop-up to add a new parameter to the message.
         """
-        ParameterPopUp(self)
+        ParameterPopUp(self, False)
 
 
     def __command_back(self) -> None:
