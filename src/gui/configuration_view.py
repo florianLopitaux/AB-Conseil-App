@@ -12,8 +12,6 @@ class ConfigurationView(customtkinter.CTkFrame):
         self.pack(pady=(70, 0), ipadx=100)
 
         self.__container = container
-        self.__current_appearance_mode = Settings.get_instance().get_appearance_mode()
-        self.__current_color_theme = Settings.get_instance().get_color_theme()
 
         self.__configure_grid()
 
@@ -45,13 +43,13 @@ class ConfigurationView(customtkinter.CTkFrame):
         This private method is called only in the constructor.
         It generates the two options menu widgets of the frame (appearance mode and color theme)
         """
-        self.__options_appearance_mode = customtkinter.CTkOptionMenu(master=self, values=["System", "Dark", "Light"])
-        self.__options_appearance_mode.set(Settings.get_instance().get_appearance_mode())
-        self.__options_appearance_mode.grid(row=0, column=0, columnspan=2, pady=(30, 15))
+        self.__option_appearance_mode = customtkinter.CTkOptionMenu(master=self, values=["System", "Dark", "Light"])
+        self.__option_appearance_mode.set(Settings.get_instance().get_appearance_mode())
+        self.__option_appearance_mode.grid(row=0, column=0, columnspan=2, pady=(30, 15))
 
-        self.__option_colors_theme = customtkinter.CTkOptionMenu(master=self, values=["blue", "green"])
-        self.__option_colors_theme.set(Settings.get_instance().get_color_theme())
-        self.__option_colors_theme.grid(row=1, column=0, columnspan=2, pady=15)
+        self.__option_color_theme = customtkinter.CTkOptionMenu(master=self, values=["blue", "green"])
+        self.__option_color_theme.set(Settings.get_instance().get_color_theme())
+        self.__option_color_theme.grid(row=1, column=0, columnspan=2, pady=15)
 
 
     def __build_radio_buttons_section(self) -> None:
@@ -64,10 +62,16 @@ class ConfigurationView(customtkinter.CTkFrame):
         desc_radio_buttons = customtkinter.CTkLabel(master=self, text="Phone number format")
         desc_radio_buttons.grid(row=2, column=0, columnspan=2, pady=(15, 5))
 
-        radioButton06 = customtkinter.CTkRadioButton(master=self, text="06...", value=0)
+        self.__radio_button_var = customtkinter.IntVar()
+        if (Settings.get_instance().get_phone_format() == "06"):
+            self.__radio_button_var.set(0)
+        else:
+            self.__radio_button_var.set(1)
+
+        radioButton06 = customtkinter.CTkRadioButton(master=self, text="06...", variable=self.__radio_button_var, value=0)
         radioButton06.grid(row=3, column=0, pady=(5, 15))
 
-        radioButton33 = customtkinter.CTkRadioButton(master=self, text="+33...", value=1)
+        radioButton33 = customtkinter.CTkRadioButton(master=self, text="+33...", variable=self.__radio_button_var, value=1)
         radioButton33.grid(row=3, column=1, pady=(5, 15))
 
 
@@ -101,4 +105,19 @@ class ConfigurationView(customtkinter.CTkFrame):
 
 
     def __command_validate(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'validate' button when it pressed.
+        It saves changes and rebuild the home view.
+        """
+        Settings.get_instance().set_appearance_mode(self.__option_appearance_mode.get())
+        Settings.get_instance().set_color_theme(self.__option_color_theme.get())
+
+        if (self.__radio_button_var.get() == 0):
+            Settings.get_instance().set_phone_format("06")
+        else:
+            Settings.get_instance().set_phone_format("+33")
+        
+        clear_frame(self)
+        self.__container.build_buttons()

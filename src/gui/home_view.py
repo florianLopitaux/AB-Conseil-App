@@ -20,6 +20,7 @@ class HomeView(customtkinter.CTkFrame):
         """
         super().__init__(master=app, fg_color="transparent")
         self.pack(ipadx=210, ipady=80)
+        
         self.__app = app
 
         # title
