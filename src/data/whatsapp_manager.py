@@ -8,6 +8,20 @@ from data.excel_utils import *
 
 
 def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[str, int, int]) -> None:
+    """
+    SUMMARY
+    -------
+
+
+    ARGUMENTS
+    ---------
+        - view : customtkinter.CTk
+            The DraftingAdvertisingView to get some view data.
+        - phone_number_parameter : tuple[str, int, int]
+            The key parameter which represents the phone number parameter in the format
+            (letter phone column => (first row, last row))
+    """
+
     # for each line in the excel file
     for row in range(phone_number_parameter[1], phone_number_parameter[2] + 1):
         final_message = __decrypted_message(view.get_excel_file(), view.get_message(), view.get_parameters(), row)
@@ -28,6 +42,27 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
 
 
 def __decrypted_message(excel_file_name: str, message_crypted: str, parameters: dict[str, tuple[str, str]], row: int) -> str:
+    """
+    SUMMARY
+    -------
+    This private function decryptes the message encoded with parameters for a specific row in the excel file.
+
+    ARGUMENTS
+    ---------
+        - excel_file_name : str
+            The name of the excel file.
+        - message_crypted : str
+            The message encoded with parameters.
+        - parameters : dict[str, tuple[str, str]]
+            List of all parameters in the format (parameter name => (default value, letter column)).
+        - row : int
+            The row of the current message.
+
+    RETURNS
+    -------
+    str: The message decrypted to send on whatsapp.
+    """
+
     # get positions of all brackets in the message
     index_brackets_open = [i for i, letter in enumerate(message_crypted) if letter == '{']
     index_brackets_close = [i for i, letter in enumerate(message_crypted) if letter == '}']

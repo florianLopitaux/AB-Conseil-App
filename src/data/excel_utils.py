@@ -41,6 +41,7 @@ def get_cell_data(excel_file_name: str, letter_column: str, row: int) -> str:
     -------
     str: The value content of the cell.
     """
+
     # load the excel file
     wb = load_workbook(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", excel_file_name))
     ws = wb.active
@@ -72,6 +73,7 @@ def get_row_data(excel_file_name: str, parameters: dict[str, tuple[str, str]], r
     -------
     dict[str, str]: The list of the parameters with their value corresponding.
     """
+
     # load the excel file
     wb = load_workbook(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", excel_file_name))
     ws = wb.active
