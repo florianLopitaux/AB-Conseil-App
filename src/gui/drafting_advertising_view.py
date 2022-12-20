@@ -7,6 +7,27 @@ from gui.pop_up_parameter import ParameterPopUp
 
 
 class DraftingAdvertisingView(customtkinter.CTkFrame):
+    """
+    SUMMARY
+    -------
+    This class is the frame that manage all user interface to prepare the messages wave on whatsapp.
+
+    METHODS
+    -------
+        CONSTRUCTOR
+        -----------
+        - DraftingAdvertisingView(app: customtkinter.CTk)
+
+        GETTERS
+        -------
+        - get_parameters() -> dict[str, tuple[str, str]]
+        - get_message() -> str
+        - get_excel_file() -> str
+
+        SETTER
+        ------
+        - add_parameter(parameter_name: str, default_value: str, letter_column: str) -> None
+    """
     # CONSTRUCTOR
     def __init__(self, app: customtkinter.CTk):
         """
@@ -16,7 +37,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
 
         ARGUMENTS
         ---------
-            app : customtkinter.CTk
+            - app : customtkinter.CTk
                 The window of the application.
         """
         super().__init__(master=app)

@@ -10,7 +10,7 @@ def clear_frame(container: customtkinter.CTkFrame) -> None:
 
     ARGUMENTS
     ---------
-        container : customtkinter.CTkFrame
+        - container : customtkinter.CTkFrame
             The container that we want clean.
     """
     for widget in container.winfo_children():
@@ -27,9 +27,9 @@ def create_red_button(container: customtkinter.CTkFrame, button_text: str) -> cu
 
     ARGUMENTS
     ---------
-        container : customtkinter.CTkFrame
+        - container : customtkinter.CTkFrame
             The frame that contains the button.
-        button_text : str
+        - button_text : str
             The text that we want inside on the button.
 
     RETURNS
@@ -47,9 +47,9 @@ def create_green_button(container: customtkinter.CTkFrame, button_text: str) -> 
 
     ARGUMENTS
     ---------
-        container : customtkinter.CTkFrame
+        - container : customtkinter.CTkFrame
             The frame that contains the button.
-        button_text : str
+        - button_text : str
             The text that we want inside on the button.
 
     RETURNS

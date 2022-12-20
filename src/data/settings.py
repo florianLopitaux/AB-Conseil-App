@@ -121,7 +121,7 @@ class Settings:
 
         ARGUMENTS
         ---------
-            appearance_mode : str
+            - appearance_mode : str
                 The appearance of the application that we want applied.
         """
         assert appearance_mode in ["System", "Dark", "Light"], "Error ! Appearance mode: '" + appearance_mode + "' doesn't exist !"
@@ -143,7 +143,7 @@ class Settings:
 
         ARGUMENTS
         ---------
-            color_theme : str
+            - color_theme : str
                 The color theme of the application that we want applied.
         """
         assert color_theme in ["blue", "green"], "Error ! Theme color: '" + color_theme + "' doesn't exist !"
@@ -165,7 +165,7 @@ class Settings:
 
         ARGUMENTS
         ---------
-            phone_format : str
+            - phone_format : str
                 The phone format of the application that we want applied.
         """
         assert phone_format in ["06", "+33"], "Error ! Phone format: '" + phone_format + "' doesn't exist !"

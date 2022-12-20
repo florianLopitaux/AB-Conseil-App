@@ -29,7 +29,7 @@ class ConfigurationView(customtkinter.CTkFrame):
 
         ARGUMENTS
         ---------
-            container : customtkinter.CTkFrame
+            - container : customtkinter.CTkFrame
                 The frame (master) that contains the configuration view.
         """
         super().__init__(master=container)

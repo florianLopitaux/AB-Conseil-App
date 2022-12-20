@@ -7,8 +7,27 @@ from gui.drafting_advertising_view import DraftingAdvertisingView
 
 
 class App(customtkinter.CTk):
+    """
+    SUMMARY
+    -------
+    This class is the window class that we instantiate to launch the application.
+
+    METHODS
+    -------
+    - change_view(view_name: str) -> None 
+    - run() -> None
+
+        CONSTRUCTOR
+        -----------
+        - App()
+    """
     # CONSTRUCTOR
     def __init__(self):
+        """
+        SUMMARY
+        -------
+        This constructor loads and genrates all things to start the application.
+        """
         super().__init__()
         self.title("AB Conseil application")
         self.resizable(False, False)
@@ -31,7 +50,7 @@ class App(customtkinter.CTk):
 
         ARGUMENTS
         ---------
-            view_name : str
+            - view_name : str
                 The name of the new view that we want set.
         """
         match view_name:

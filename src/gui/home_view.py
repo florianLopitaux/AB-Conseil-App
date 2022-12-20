@@ -28,7 +28,7 @@ class HomeView(customtkinter.CTkFrame):
 
         ARGUMENTS
         ---------
-            app : customtkinter.CTk
+            - app : customtkinter.CTk
                 The window of the application
         """
         super().__init__(master=app, fg_color="transparent")

@@ -5,6 +5,17 @@ from data.whatsapp_manager import launch_messages_wave
 
 
 class ParameterPopUp(customtkinter.CTkToplevel):
+    """
+    SUMMARY
+    -------
+    This class is the frame that manage the user interface to configure a new parameter.
+
+    METHODS
+    -------
+        CONSTRUCTOR
+        -----------
+        - ParameterPopUp(parent: customtkinter.CTkFrame, isKeyParameter: bool)
+    """
     # CONSTRUCTOR
     def __init__(self, parent: customtkinter.CTkFrame, isKeyParameter: bool):
         """

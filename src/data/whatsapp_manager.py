@@ -11,7 +11,7 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
     """
     SUMMARY
     -------
-
+    This function send the message of the user to each number in the excel file informed.
 
     ARGUMENTS
     ---------
