@@ -92,7 +92,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
             - letter_column : str
                 The letter column of the parameter corresponding in the excel file.
         """
-        self.__parameters_list[parameter_name] = letter_column, default_value
+        self.__parameters_list[parameter_name] = default_value, letter_column
         self.__parameters_option_menu.configure(values=self.__parameters_list)
 
 

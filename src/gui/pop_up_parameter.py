@@ -20,7 +20,12 @@ class ParameterPopUp(customtkinter.CTkToplevel):
                 The boolean to know if the pop-up is for the main parameter (phone number) or a generic parameter.
         """
         super().__init__()
-        self.title("Add new parameter")
+
+        if isKeyParameter:
+            self.title("Phone number parameter")
+        else:
+            self.title("Add new parameter")
+
         self.__parent = parent
         self.__isKeyParameter = isKeyParameter
 
@@ -93,9 +98,16 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         This private method is the function linked with the 'register' button when it pressed.
         It adds the new parameter to the drafting advertising view and closes itself.
         """
-        self.destroy()
-
         if self.__isKeyParameter:
-            launch_messages_wave(self.__parent, (self.__letter_column_entry.get(), self.__start_row_entry.getint(), self.__end_row_entry.getint()))
+            # store input data before destroy the pop-up because impossible to get after
+            letter_column = self.__letter_column_entry.get()
+            start_row = int(self.__start_row_entry.get())
+            end_row = int(self.__end_row_entry.get())
+
+            self.destroy()
+
+            launch_messages_wave(self.__parent, (letter_column.upper(), start_row, end_row))
+        
         else:
-            self.__parent.add_parameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get())
+            self.__parent.add_parameter(self.__name_entry.get(), self.__default_value_entry.get(), self.__letter_column_entry.get().upper())
+            self.destroy()

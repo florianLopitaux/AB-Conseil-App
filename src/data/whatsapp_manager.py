@@ -21,27 +21,36 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
 
 
 def __decrypted_message(excel_file_name: str, message_crypted: str, parameters: dict[str, tuple[str, str]], row: int) -> str:
+    # get positions of all brackets in the message
     index_brackets_open = [i for i, letter in enumerate(message_crypted) if letter == '{']
     index_brackets_close = [i for i, letter in enumerate(message_crypted) if letter == '}']
 
+    # no parameters in the message
     if len(index_brackets_open) == 0:
         return message_crypted
 
-    finalMessage = message_crypted[:index_brackets_open[0]]
+    # add message part before the first parameter
+    final_message = message_crypted[:index_brackets_open[0]]
 
     for i in range(len(index_brackets_open)):
+        # substr to get the parameter name
         param = message_crypted[index_brackets_open[i] + 1:index_brackets_close[i]]
+        # get the parameter value in the excel file
         cell_data = get_cell_data(excel_file_name, parameters[param][1], row)
 
+        # no value in the excel file
         if cell_data is None:
-            finalMessage += parameters[param][0]
+            # default parameter value
+            final_message += parameters[param][0]
         else:
-            finalMessage += cell_data
+            final_message += cell_data
 
-        if i == len(index_brackets_open) - 1:
-            break
-        else:
-            finalMessage += message_crypted[index_brackets_close[i] + 1:index_brackets_open[i + 1]]
-    
-    finalMessage += message_crypted[index_brackets_close[-1] + 1:]
-    return finalMessage
+        # if it's not the last parameter
+        if i < len(index_brackets_open) - 1:
+            # add message content between the current parameter and the next. 
+            final_message += message_crypted[index_brackets_close[i] + 1:index_brackets_open[i + 1]]
+            
+    # add final content of the message after the last parameter
+    final_message += message_crypted[index_brackets_close[-1] + 1:]
+
+    return final_message
