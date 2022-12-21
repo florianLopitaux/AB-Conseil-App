@@ -107,12 +107,13 @@ class ConfigurationView(customtkinter.CTkFrame):
         It generates the three buttons widgets of the frame.
         """
         self.__language_segmented_button = customtkinter.CTkSegmentedButton(master=self, command=self.__command_language,
-                                                                            values=["English", "French"])
+                                                                            values=[Settings.get_instance().get_text("SettingsView", "englishWordSegmentedButton"),
+                                                                            Settings.get_instance().get_text("SettingsView", "frenchWordSegmentedButton")])
         
         if Settings.get_instance().get_language() == "en":
-            self.__language_segmented_button.set("English")
+            self.__language_segmented_button.set(Settings.get_instance().get_text("SettingsView", "englishWordSegmentedButton"))
         else:
-            self.__language_segmented_button.set("French")
+            self.__language_segmented_button.set(Settings.get_instance().get_text("SettingsView", "frenchWordSegmentedButton"))
         
         self.__language_segmented_button.grid(row= 0, column=0, columnspan=3, sticky="ew", padx=40, pady=20)
 
@@ -139,10 +140,14 @@ class ConfigurationView(customtkinter.CTkFrame):
             - value (_type_)
                 The value of the segmented button.
         """
-        if value == "English":
+        if value == "English" or value == "Anglais":
             Settings.get_instance().set_language("en")
+            self.__language_segmented_button.configure(values=[Settings.get_instance().get_text("SettingsView", "englishWordSegmentedButton"), Settings.get_instance().get_text("SettingsView", "frenchWordSegmentedButton")])
+            self.__language_segmented_button.set(Settings.get_instance().get_text("SettingsView", "englishWordSegmentedButton"))
         else:
             Settings.get_instance().set_language("fr")
+            self.__language_segmented_button.configure(values=[Settings.get_instance().get_text("SettingsView", "englishWordSegmentedButton"), Settings.get_instance().get_text("SettingsView", "frenchWordSegmentedButton")])
+            self.__language_segmented_button.set(Settings.get_instance().get_text("SettingsView", "frenchWordSegmentedButton"))
         
         self.__desc_radio_buttons.configure(text=Settings.get_instance().get_text("SettingsView", "phoneFormatLabel"))
         self.__cancel_button.configure(text=Settings.get_instance().get_text("SettingsView", "cancelButton"))

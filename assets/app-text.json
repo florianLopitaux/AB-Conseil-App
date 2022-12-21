@@ -15,6 +15,14 @@
   },
 
   "SettingsView": {
+    "englishWordSegmentedButton": {
+      "fr": "Anglais",
+      "en": "English"
+    },
+    "frenchWordSegmentedButton": {
+      "fr": "Francais",
+      "en": "French"
+    },
     "phoneFormatLabel": {
       "fr": "Format de numero de telephone",
       "en": "Phone number format"
