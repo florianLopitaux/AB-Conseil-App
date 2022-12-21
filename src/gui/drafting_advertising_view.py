@@ -219,7 +219,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
             return None
         
         for param_name in parameters:
-            if not param_name in self.__parameters_list.keys():
+            if param_name not in self.__parameters_list.keys():
                 messagebox.showerror("AB Conseil application error !", "You didn't add all the parameters written in the message !")
                 return None
 

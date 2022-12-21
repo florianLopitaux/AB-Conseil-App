@@ -59,7 +59,7 @@ def get_all_messages_parameters(message_crypted: str) -> list[str]:
     index_brackets_open = [i for i, letter in enumerate(message_crypted) if letter == '{']
     index_brackets_close = [i for i, letter in enumerate(message_crypted) if letter == '}']
 
-    if len(index_brackets_open) != index_brackets_close:
+    if len(index_brackets_open) != len(index_brackets_close):
         return None
     
     parameters = []
