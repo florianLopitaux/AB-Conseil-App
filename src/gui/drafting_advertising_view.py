@@ -3,6 +3,7 @@ from tkinter import messagebox
 import customtkinter
 
 from data.excel_utils import check_file
+from data.whatsapp_manager import get_all_messages_parameters
 from gui.generic_gui import *
 from gui.pop_up_parameter import ParameterPopUp
 
@@ -211,6 +212,17 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         This private method is the function linked with the 'validate' button when it pressed.
         It launch the pop-up parameter to phone number (special data to inform) before starting the send messages wave.
         """
+        parameters = get_all_messages_parameters(self.get_message())
+
+        if parameters is None:
+            messagebox.showerror("AB Conseil application error !", "The message doesn't have the same number of brackets open and close.")
+            return None
+        
+        for param_name in parameters:
+            if not param_name in self.__parameters_list.keys():
+                messagebox.showerror("AB Conseil application error !", "You didn't add all the parameters written in the message !")
+                return None
+
         if "xls" not in self.get_excel_file():
             messagebox.showerror("AB Conseil application error !", "The file : '" + self.get_excel_file() + "' isn't an excel file !")
             return None
