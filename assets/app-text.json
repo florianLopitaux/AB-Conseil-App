@@ -1,5 +1,5 @@
 {
-  "homeView": {
+  "HomeView": {
     "useAppButton": {
       "fr": "Utiliser le logiciel",
       "en": "Use app"
@@ -14,7 +14,7 @@
     }
   },
 
-  "settingsView": {
+  "SettingsView": {
     "phoneFormatLabel": {
       "fr": "Format de numéro de téléphone",
       "en": "Phone number format"
@@ -23,13 +23,13 @@
       "fr": "Annuler",
       "en": "Cancel"
     },
-    "ApplyButton": {
+    "applyButton": {
       "fr": "Appliquer",
       "en": "Apply"
     }
   },
 
-  "draftingAdvertisingView": {
+  "DraftingAdvertisingView": {
     "fileLabel": {
       "fr": "fichier excel :",
       "en": "excel file :"
@@ -56,7 +56,7 @@
     }
   },
 
-  "popUpParameter": {
+  "PopUpParameter": {
     "parameterNameLabel": {
       "fr": "Nom",
       "en": "Name"

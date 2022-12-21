@@ -83,7 +83,7 @@ class ConfigurationView(customtkinter.CTkFrame):
         This private method is called only in the constructor.
         It generates the two radio buttons widgets and corresponding section label of the frame.
         """
-        desc_radio_buttons = customtkinter.CTkLabel(master=self, text="Phone number format")
+        desc_radio_buttons = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("SettingsView", "phoneFormatLabel"))
         desc_radio_buttons.grid(row=2, column=0, columnspan=2, pady=(15, 5))
 
         self.__radio_button_var = customtkinter.IntVar()
@@ -106,11 +106,11 @@ class ConfigurationView(customtkinter.CTkFrame):
         This private method is called only in the constructor.
         It generates the two buttons widgets of the frame.
         """
-        cancel_button = create_red_button(self, "Cancel")
+        cancel_button = create_red_button(self, Settings.get_instance().get_text("SettingsView", "cancelButton"))
         cancel_button.configure(command=self.__command_cancel)
         cancel_button.grid(row=4, column=0, pady=(30, 8))
 
-        validate_button = create_green_button(self, "Apply")
+        validate_button = create_green_button(self, Settings.get_instance().get_text("SettingsView", "applyButton"))
         validate_button.configure(command=self.__command_validate)
         validate_button.grid(row=4, column=1, pady=(30, 8))
 
