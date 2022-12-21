@@ -249,7 +249,7 @@ class Settings:
         If the method can't open the json configuration file, it raises an error with a message box to the user.
         """
         try:
-            with open(Settings.__PATH_JSON_CONFIGURATION_FILE, 'w') as file_out:
+            with open(os.path.join(Settings.__PATH_ASSETS_FOLDER, "app-configuration.json"), 'w') as file_out:
                 json.dump(self.__json_configuration, file_out, indent=4)
 
         except FileNotFoundError:
