@@ -128,7 +128,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         -------
         This private method is used to create all labels and text widgets in the view.
         """
-        excel_file_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("draftingAdvertisingView", "fileLabel"))
+        excel_file_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("DraftingAdvertisingView", "fileLabel"))
         excel_file_label.grid(row=0, column=0, pady=(30, 15))
 
         self.__message_text_box = customtkinter.CTkTextbox(master=self, font=("Helvetica", 12))
@@ -149,7 +149,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         self.__excel_file_combo_box.grid(row=0, column=1, columnspan=2, sticky="ew", padx=(0, 30), pady=(30, 15))
 
         self.__parameters_option_menu = customtkinter.CTkOptionMenu(master=self, values=self.__parameters_list)
-        self.__parameters_option_menu.set(Settings.get_instance().get_text("draftingAdvertisingView", "parameterTextOptionMenu"))
+        self.__parameters_option_menu.set(Settings.get_instance().get_text("DraftingAdvertisingView", "parameterTextOptionMenu"))
         self.__parameters_option_menu.grid(row=2, column=0, padx=(30, 6), pady=15)
 
 
@@ -160,18 +160,18 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         This private method is used to create all buttons widgets in the view.
         """
         remove_parameter_button = customtkinter.CTkButton(master=self, command=self.__command_delete,
-                                                          text=Settings.get_instance().get_text("draftingAdvertisingView", "removeParameterButton"))
+                                                          text=Settings.get_instance().get_text("DraftingAdvertisingView", "removeParameterButton"))
         remove_parameter_button.grid(row=2, column=1, padx=6, pady=15)
 
         add_parameter_button = customtkinter.CTkButton(master=self, command=self.__command_append,
-                                                       text=Settings.get_instance().get_text("draftingAdvertisingView", "addParameterButton"))
+                                                       text=Settings.get_instance().get_text("DraftingAdvertisingView", "addParameterButton"))
         add_parameter_button.grid(row=2, column=2, padx=(6, 30), pady=15)
 
-        back_button = create_red_button(self, Settings.get_instance().get_text("draftingAdvertisingView", "backButton"))
+        back_button = create_red_button(self, Settings.get_instance().get_text("DraftingAdvertisingView", "backButton"))
         back_button.configure(command=self.__command_back)
         back_button.grid(row=3, column=0, columnspan=2, pady=(30, 15))
 
-        validate_button = create_green_button(self, Settings.get_instance().get_text("draftingAdvertisingView", "validateButton"))
+        validate_button = create_green_button(self, Settings.get_instance().get_text("DraftingAdvertisingView", "validateButton"))
         validate_button.configure(command=self.__command_validate)
         validate_button.grid(row=3, column=1, columnspan=2, pady=(30, 15))
 
@@ -186,7 +186,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         It delete the parameter selectioned in the option parameter menu.
         """
         if self.__parameters_list.pop(self.__parameters_option_menu.get(), None) is not None:
-            self.__parameters_option_menu.set("parameters list")
+            self.__parameters_option_menu.set(Settings.get_instance().get_text("DraftingAdvertisingView", "parameterTextOptionMenu"))
 
 
     def __command_append(self) -> None:
@@ -216,11 +216,11 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         It launch the pop-up parameter to phone number (special data to inform) before starting the send messages wave.
         """
         if not check_file(self.get_excel_file()):
-            messagebox.showerror("AB Conseil application error !", Settings.get_instance().get_text("MessageBoxError", "excelFileExists"))
+            messagebox.showerror("AB Conseil application error !", Settings.get_instance().get_text("MessageBoxError", "excelFileExists").format(self.get_excel_file()))
             return None
 
         if "xls" not in self.get_excel_file():
-            messagebox.showerror("AB Conseil application error !", Settings.get_instance().get_text("MessageBoxError", "fileNotAnExcelFile"))
+            messagebox.showerror("AB Conseil application error !", Settings.get_instance().get_text("MessageBoxError", "fileNotAnExcelFile").format(self.get_excel_file()))
             return None
         
         parameters = get_all_messages_parameters(self.get_message())
