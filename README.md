@@ -33,7 +33,7 @@ Contributors list :
 ## Version History
 
 * 0.1 (17/12/2022)
-    * Executable and working but not yet released, still under development.
+    * Executable and partially working but not yet released (lot of bugs), still under development.
     
 * 1.0 (20/12/2022) - First release !
     * 1.1 (21/12/2022) - Update version !<br>
