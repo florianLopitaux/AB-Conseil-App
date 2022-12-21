@@ -1,6 +1,8 @@
 import os
+from tkinter import messagebox
 import customtkinter
 
+from data.excel_utils import check_file
 from gui.generic_gui import *
 from gui.pop_up_parameter import ParameterPopUp
 
@@ -209,4 +211,12 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         This private method is the function linked with the 'validate' button when it pressed.
         It launch the pop-up parameter to phone number (special data to inform) before starting the send messages wave.
         """
+        if "xls" not in self.get_excel_file():
+            messagebox.showerror("AB Conseil application error !", "The file : '" + self.get_excel_file() + "' isn't an excel file !")
+            return None
+
+        if not check_file(self.get_excel_file()):
+            messagebox.showerror("AB Conseil application error !", "The excel file : '" + self.get_excel_file() + "' doesn't exist in the 'assets' folder !")
+            return None
+
         ParameterPopUp(self, True)
