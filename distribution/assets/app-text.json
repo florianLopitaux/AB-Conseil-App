@@ -1,0 +1,112 @@
+{
+  "HomeView": {
+    "useAppButton": {
+      "fr": "Utiliser le logiciel",
+      "en": "Use app"
+    },
+    "settingsButton": {
+      "fr": "Options",
+      "en": "Settings"
+    },
+    "exitButton": {
+      "fr": "Quitter",
+      "en": "Exit"
+    }
+  },
+
+  "SettingsView": {
+    "englishWordSegmentedButton": {
+      "fr": "Anglais",
+      "en": "English"
+    },
+    "frenchWordSegmentedButton": {
+      "fr": "Francais",
+      "en": "French"
+    },
+    "phoneFormatLabel": {
+      "fr": "Format de numero de telephone",
+      "en": "Phone number format"
+    },
+    "cancelButton": {
+      "fr": "Annuler",
+      "en": "Cancel"
+    },
+    "applyButton": {
+      "fr": "Appliquer",
+      "en": "Apply"
+    }
+  },
+
+  "DraftingAdvertisingView": {
+    "fileLabel": {
+      "fr": "fichier excel :",
+      "en": "excel file :"
+    },
+    "parameterTextOptionMenu": {
+      "fr": "liste des parametres",
+      "en": "parameters list"
+    },
+    "removeParameterButton": {
+      "fr": "Supprimer parametre",
+      "en": "Remove parameter"
+    },
+    "addParameterButton": {
+      "fr": "Ajouter parametre",
+      "en": "Add parameter"
+    },
+    "backButton": {
+      "fr": "Revenir au menu",
+      "en": "Back to Menu"
+    },
+    "validateButton": {
+      "fr": "Valider",
+      "en": "Validate"
+    }
+  },
+
+  "PopUpParameter": {
+    "parameterNameLabel": {
+      "fr": "Nom",
+      "en": "Name"
+    },
+    "defaultValueLabel": {
+      "fr": "Valeur par defaut :",
+      "en": "Default value :"
+    },
+    "letterColumnLabel": {
+      "fr": "Lettre de la colonne :",
+      "en": "Column letter :"
+    },
+    "firstRowLabel": {
+      "fr": "Premiere ligne :",
+      "en": "First row :"
+    },
+    "lastRowLabel": {
+      "fr": "Derniere ligne :",
+      "en": "Last row"
+    },
+    "registerButton": {
+      "fr": "Enregistrer",
+      "en": "Register"
+    }
+  },
+
+  "MessageBoxError": {
+    "excelFileExists": {
+      "fr": "Le fichier : '{0}' n'existe pas dans le dossier 'assets' !",
+      "en": "The file : '{0}' doesn't exist in the 'assets' folder !"
+    },
+    "fileNotAnExcelFile": {
+      "fr": "Le fichier '{0}' n'est pas un fichier excel !",
+      "en": "The file '{0}' isn't an excel file !"
+    },
+    "nbBracketsError": {
+      "fr": "Le message n'a pas le meme nombre d'accolades ouvertes et fermees !",
+      "en": "The message doesn't have the same number of brackets open and close !"
+    },
+    "notRegisterAllParameters": {
+      "fr": "Vous n'avez pas ajouter tous les parametres ecrient dans le message !",
+      "en": "You didn't add all the parameters written in the message !"
+    }
+  }
+}
