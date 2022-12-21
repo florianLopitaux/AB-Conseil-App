@@ -58,9 +58,9 @@ class Settings:
                     self.__json_text = json.load(json_file)
 
             except FileNotFoundError:
-                messagebox.showerror("AB Conseil application error !", "The json configuration file doesn't find in the 'assets' folder !")
+                messagebox.showerror("AB Conseil application error !", "The json text file doesn't find in the 'assets' folder !")
             except json.JSONDecodeError:
-                messagebox.showerror("AB Conseil application error !", "The application can't decode the json configuration file !")
+                messagebox.showerror("AB Conseil application error !", "The application can't decode the json text file !")
 
             try:
                 with open(os.path.join(Settings.__PATH_ASSETS_FOLDER, "app-configuration.json")) as json_file:

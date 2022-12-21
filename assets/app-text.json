@@ -88,14 +88,6 @@
   },
 
   "MessageBoxError": {
-    "jsonConfigurationNotExists": {
-      "fr": "Le fichier de configuration json n'existe pas dans le dossier 'assets' !",
-      "en": "The json configuration file doesn't find in the 'assets' folder !"
-    },
-    "jsonConfigurationNotDecoded": {
-      "fr": "Le logiciel ne peut pas désérialiser le contenue du fichier de configuration json !",
-      "en": "The software can't deserialize the content of the json configuration file !"
-    },
     "excelFileExists": {
       "fr": "Le fichier : '{0}' n'existe pas dans le dossier 'assets' !",
       "en": "The file : '{0}' doesn't exist in the 'assets' folder !"
