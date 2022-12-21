@@ -1,0 +1,59 @@
+{
+  "homeView": {
+    "title": {
+      "fr": "AB Conseil Whatsapp application",
+      "en": "AB Conseil Whatsapp application"
+    },
+    "useAppButton": {
+      "fr": "Utiliser le logiciel",
+      "en": "Use app"
+    },
+    "settingsButton": {
+      "fr": "Options",
+      "en": "Settings"
+    },
+    "exitButton": {
+      "fr": "Quitter",
+      "en": "Exit"
+    }
+  },
+
+  "settingsView": {
+    
+  },
+
+  "draftingAdvertisingView": {
+    "fileLabel": {
+      "fr": "fichier excel :",
+      "en": "excel file :"
+    },
+    "parameterTextOptionMenu": {
+      "fr": "liste des paramètres",
+      "en": "parameters list"
+    },
+    "removeParameterButton": {
+      "fr": "Supprimer paramètre",
+      "en": "Remove parameter"
+    },
+    "addParameterButton": {
+      "fr": "Ajouter paramètre",
+      "en": "Add parameter"
+    },
+    "cancelButton": {
+      "fr": "Annuler",
+      "en": "Cancel"
+    },
+    "validateButton": {
+      "fr": "Valider",
+      "en": "Validate"
+    }
+  },
+
+  "popUpParameter": {
+    
+  },
+
+  "MessageBoxError": {
+    
+  }
+}
