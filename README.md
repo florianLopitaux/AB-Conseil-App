@@ -32,5 +32,8 @@ Contributors list :
 
 ## Version History
 
-* 0.1
-    * not yet released, still under development.
+* 0.1 (17/12/2022)
+    * Executable and working but not yet released, still under development.
+    
+* 1.0 (21/12/2022)
+    * First release !
