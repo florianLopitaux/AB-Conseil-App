@@ -16,7 +16,7 @@
 
   "SettingsView": {
     "phoneFormatLabel": {
-      "fr": "Format de numéro de téléphone",
+      "fr": "Format de numero de telephone",
       "en": "Phone number format"
     },
     "cancelButton": {
@@ -35,15 +35,15 @@
       "en": "excel file :"
     },
     "parameterTextOptionMenu": {
-      "fr": "liste des paramètres",
+      "fr": "liste des parametres",
       "en": "parameters list"
     },
     "removeParameterButton": {
-      "fr": "Supprimer paramètre",
+      "fr": "Supprimer parametre",
       "en": "Remove parameter"
     },
     "addParameterButton": {
-      "fr": "Ajouter paramètre",
+      "fr": "Ajouter parametre",
       "en": "Add parameter"
     },
     "backButton": {
@@ -62,7 +62,7 @@
       "en": "Name"
     },
     "defaultValueLabel": {
-      "fr": "Valeur par défaut :",
+      "fr": "Valeur par defaut :",
       "en": "Default value :"
     },
     "letterColumnLabel": {
@@ -70,11 +70,11 @@
       "en": "Column letter :"
     },
     "firstRowLabel": {
-      "fr": "Première ligne :",
+      "fr": "Premiere ligne :",
       "en": "First row :"
     },
     "lastRowLabel": {
-      "fr": "Dernière ligne :",
+      "fr": "Derniere ligne :",
       "en": "Last row"
     },
     "registerButton": {
@@ -93,11 +93,11 @@
       "en": "The file '{0}' isn't an excel file !"
     },
     "nbBracketsError": {
-      "fr": "Le message n'a pas le même nombre d'accolades ouvertes et fermées !",
+      "fr": "Le message n'a pas le meme nombre d'accolades ouvertes et fermees !",
       "en": "The message doesn't have the same number of brackets open and close !"
     },
     "notRegisterAllParameters": {
-      "fr": "Vous n'avez pas ajouter tous les paramètres écrient dans le message !",
+      "fr": "Vous n'avez pas ajouter tous les parametres ecrient dans le message !",
       "en": "You didn't add all the parameters written in the message !"
     }
   }
