@@ -41,6 +41,35 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
             time.sleep(15)
 
 
+def get_all_messages_parameters(message_crypted: str) -> list[str]:
+    """
+    SUMMARY
+    -------
+    This function allows to get all parameters name in the message writes by the user.
+
+    ARGUMENTS
+    ---------
+        - message_crypted : str
+            The message writes by the user.
+
+    Returns:
+    list[str]: The list of all parameters name.
+    None: If we have a problem with the numbers of brackets open and close.
+    """
+    index_brackets_open = [i for i, letter in enumerate(message_crypted) if letter == '{']
+    index_brackets_close = [i for i, letter in enumerate(message_crypted) if letter == '}']
+
+    if len(index_brackets_open) != index_brackets_close:
+        return None
+    
+    parameters = []
+
+    for i in range(len(index_brackets_open)):
+        parameters.append(message_crypted[index_brackets_open[i] + 1:index_brackets_close[i]])
+    
+    return parameters
+
+
 def __decrypted_message(excel_file_name: str, message_crypted: str, parameters: dict[str, tuple[str, str]], row: int) -> str:
     """
     SUMMARY
