@@ -1,6 +1,7 @@
 from typing import Self
 import os
 import json
+from tkinter import messagebox
 import customtkinter
 
 
@@ -56,9 +57,9 @@ class Settings:
                     self.__json_configuration =  json.load(json_file)
 
             except FileNotFoundError:
-                print("Error ! Can't open the json configuration file")
+                messagebox.showerror("AB Conseil application error !", "The json configuration file doesn't find in the 'assets' folder !")
             except json.JSONDecodeError:
-                print("Error ! Can't read/decode json configuration file")
+                messagebox.showerror("AB Conseil application error !", "The application can't decode the json configuration file !")
 
             customtkinter.set_appearance_mode(self.__json_configuration['appearance_mode'])
             customtkinter.set_default_color_theme(self.__json_configuration['color_theme'])
