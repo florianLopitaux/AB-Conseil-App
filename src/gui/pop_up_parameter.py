@@ -1,5 +1,6 @@
 import customtkinter
 
+from data.settings import Settings
 from data.whatsapp_manager import launch_messages_wave
 
 
@@ -43,7 +44,8 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         self.__build_labels()
         self.__build_entries()
 
-        buttonRegister = customtkinter.CTkButton(master=self, command=self.__command_register, text="Register")
+        buttonRegister = customtkinter.CTkButton(master=self, command=self.__command_register,
+                                                 text=Settings.get_instance().get_text("PopUpParameter", "registerButton"))
         if self.__isKeyParameter:
             buttonRegister.grid(row=5, column=0, columnspan=2, pady=(30, 20))
         else:
@@ -59,20 +61,20 @@ class ParameterPopUp(customtkinter.CTkToplevel):
         This private method is called only in the constructor and is used to create all labels descriptor to entries.
         """
         if not self.__isKeyParameter:
-            name_label = customtkinter.CTkLabel(master=self, text="Name :")
+            name_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("PopUpParameter", "parameterNameLabel"))
             name_label.grid(row=0, column=0, padx=(40, 10), pady=(30, 10))
 
-            default_value_label = customtkinter.CTkLabel(master=self, text="Default Value :")
+            default_value_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("PopUpParameter", "defaultValueLabel"))
             default_value_label.grid(row=1, column=0, padx=(40, 10), pady=15)
 
-        letter_column_label = customtkinter.CTkLabel(master=self, text="Column Letter :")
+        letter_column_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("PopUpParameter", "letterColumnLabel"))
         letter_column_label.grid(row=2, column=0, padx=(40, 10), pady=10)
 
         if self.__isKeyParameter:
-            start_row_label = customtkinter.CTkLabel(master=self, text="Start Row :")
+            start_row_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("PopUpParameter", "firstRowLabel"))
             start_row_label.grid(row=3, column=0, padx=(40, 10), pady=15)
 
-            end_row_label = customtkinter.CTkLabel(master=self, text="End Row :")
+            end_row_label = customtkinter.CTkLabel(master=self, text=Settings.get_instance().get_text("PopUpParameter", "lastRowLabel"))
             end_row_label.grid(row=4, column=0, padx=(40, 10), pady=10)
 
     
