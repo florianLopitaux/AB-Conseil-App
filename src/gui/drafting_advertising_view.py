@@ -212,6 +212,14 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         This private method is the function linked with the 'validate' button when it pressed.
         It launch the pop-up parameter to phone number (special data to inform) before starting the send messages wave.
         """
+        if not check_file(self.get_excel_file()):
+            messagebox.showerror("AB Conseil application error !", "The file : '" + self.get_excel_file() + "' doesn't exist in the 'assets' folder !")
+            return None
+
+        if "xls" not in self.get_excel_file():
+            messagebox.showerror("AB Conseil application error !", "The file : '" + self.get_excel_file() + "' isn't an excel file !")
+            return None
+        
         parameters = get_all_messages_parameters(self.get_message())
 
         if parameters is None:
@@ -222,13 +230,5 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
             if param_name not in self.__parameters_list.keys():
                 messagebox.showerror("AB Conseil application error !", "You didn't add all the parameters written in the message !")
                 return None
-
-        if "xls" not in self.get_excel_file():
-            messagebox.showerror("AB Conseil application error !", "The file : '" + self.get_excel_file() + "' isn't an excel file !")
-            return None
-
-        if not check_file(self.get_excel_file()):
-            messagebox.showerror("AB Conseil application error !", "The excel file : '" + self.get_excel_file() + "' doesn't exist in the 'assets' folder !")
-            return None
 
         ParameterPopUp(self, True)
