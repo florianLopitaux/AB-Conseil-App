@@ -1,9 +1,5 @@
 {
   "homeView": {
-    "titleLabel": {
-      "fr": "AB Conseil Whatsapp application",
-      "en": "AB Conseil Whatsapp application"
-    },
     "useAppButton": {
       "fr": "Utiliser le logiciel",
       "en": "Use app"

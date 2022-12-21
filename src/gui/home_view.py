@@ -1,5 +1,6 @@
 import customtkinter
 
+from data.settings import Settings
 from gui.generic_gui import clear_frame
 from gui.configuration_frame import ConfigurationView
 
@@ -55,13 +56,16 @@ class HomeView(customtkinter.CTkFrame):
         self.__container = customtkinter.CTkFrame(master=self)
         self.__container.pack(pady=(70, 0), ipadx=100, fill="none", expand=False)
 
-        button_use_app = customtkinter.CTkButton(master=self.__container, command=self.__command_use_app, text="Use app")
+        button_use_app = customtkinter.CTkButton(master=self.__container, command=self.__command_use_app,
+                                                 text=Settings.get_instance().get_text("HomeView", "useAppButton"))
         button_use_app.pack(pady=(50, 30))
 
-        button_settings = customtkinter.CTkButton(master=self.__container, command=self.__command_settings, text="Settings")
+        button_settings = customtkinter.CTkButton(master=self.__container, command=self.__command_settings,
+                                                  text=Settings.get_instance().get_text("HomeView", "settingsButton"))
         button_settings.pack(pady=10)
 
-        button_exit = customtkinter.CTkButton(master=self.__container, command=self.__command_exit, text="Exit")
+        button_exit = customtkinter.CTkButton(master=self.__container, command=self.__command_exit,
+                                              text=Settings.get_instance().get_text("HomeView", "exitButton"))
         button_exit.pack(pady=(10, 50))
 
 
