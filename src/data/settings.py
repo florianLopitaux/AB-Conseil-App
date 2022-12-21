@@ -38,7 +38,7 @@ class Settings:
     """
     # STATIC ATTRIBUTE
     __INSTANCE = None
-    __PATH_JSON_CONFIGURATION_FILE = os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", "app-configuration.json")
+    __PATH_ASSETS_FOLDER = os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets")
 
 
     # CONSTRUCTOR
@@ -51,9 +51,19 @@ class Settings:
         """
         if (Settings.__INSTANCE is None):
             self.__json_configuration = None
+            self.__json_text = None
 
             try:
-                with open(Settings.__PATH_JSON_CONFIGURATION_FILE) as json_file:
+                with open(os.path.join(Settings.__PATH_ASSETS_FOLDER, "app-text.json")) as json_file:
+                    self.__json_text = json.load(json_file)
+
+            except FileNotFoundError:
+                messagebox.showerror("AB Conseil application error !", "The json configuration file doesn't find in the 'assets' folder !")
+            except json.JSONDecodeError:
+                messagebox.showerror("AB Conseil application error !", "The application can't decode the json configuration file !")
+
+            try:
+                with open(os.path.join(Settings.__PATH_ASSETS_FOLDER, "app-configuration.json")) as json_file:
                     self.__json_configuration =  json.load(json_file)
 
             except FileNotFoundError:
@@ -67,6 +77,20 @@ class Settings:
 
 
     # GETTERS
+    def get_language(self) -> str:
+        """
+        SUMMARY
+        -------
+        This method is the getter to the 'language' attribute.
+        The attribute stores the string value of the currently language of the application.
+
+        Returns:
+        str: The language of the application.
+             'en' => English / 'fr' => French
+        """
+        return self.__json_configuration['language']
+
+
     def get_appearance_mode(self) -> str:
         """
         SUMMARY
@@ -111,6 +135,26 @@ class Settings:
 
 
     # SETTERS
+    def set_language(self, language: str) -> None:
+        """
+        SUMMARY
+        -------
+        This method is the setter of the 'language' attribute.
+        The setter stores also the new value choose on the json configuration file.
+        The argument has only 2 possiblities : 'en' or 'fr'.
+        If the argument doesn't 2 of them, an AssertionError is thrown.
+
+        ARGUMENTS
+        ---------
+            - language: str
+                The language support that we want apply on the application.
+        """
+        assert language in ["en", "fr"], "Error ! The software doesn't support this language : '" + language + "'."
+        
+        self.__json_configuration['language'] = language
+        self.__saveData()
+
+
     def set_appearance_mode(self, appearance_mode: str) -> None:
         """
         SUMMARY
@@ -177,6 +221,26 @@ class Settings:
 
 
     # METHODS
+    def get_text(self, category: str, keyText: str) -> str:
+        """
+        SUMMARY
+        -------
+        This method get the text to display taking into account the language selectioned.
+
+        ARGUMENTS
+        ---------
+            - category (str):
+                The category where the text is stored.
+            - keyText (str):
+                The key name of the text in the json file.
+
+        RETURNS
+        -------
+        str: 
+        """
+        return self.__json_text.get(category).get(keyText).get(self.get_language())
+
+
     def __saveData(self) -> None:
         """
         SUMMARY
