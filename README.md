@@ -35,5 +35,6 @@ Contributors list :
 * 0.1 (17/12/2022)
     * Executable and working but not yet released, still under development.
     
-* 1.0 (21/12/2022)
-    * First release !
+* 1.0 (20/12/2022) - First release !
+    * 1.1 (21/12/2022) - Update version !<br>
+        Add language feature with english and french software support.
