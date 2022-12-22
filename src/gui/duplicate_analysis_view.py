@@ -1,7 +1,9 @@
 import os
+from tkinter import messagebox
 import customtkinter
 
 from data.settings import Settings
+from data.excel_utils import check_file, check_duplicates
 from gui.generic_gui import clear_frame, create_red_button
 
 
@@ -81,4 +83,18 @@ class DuplicateAnalysisView(customtkinter.CTkFrame):
 
 
     def __command_analysis(self) -> None:
-        pass
+        if not check_file(self.__excel_file_combo_box.get()):
+            messagebox.showerror("AB Conseil application error", Settings.get_instance().get_text("MessageBoxError", "excelFileExists").format(self.self.__excel_file_combo_box.get()))
+            return None
+
+        if ".xls" not in self.__excel_file_combo_box.get():
+            messagebox.showerror("AB Conseil application error", Settings.get_instance().get_text("MessageBoxError", "fileNotAnExcelFile").format(self.self.__excel_file_combo_box.get()))
+            return None
+
+
+        nb_duplicates = check_duplicates(self.__excel_file_combo_box.get(),
+                                         self.__letter_column_entry.get().upper(),
+                                         int(self.__start_row_entry.get()),
+                                         int(self.__end_row_entry.get()))
+
+        messagebox.showinfo("AB Conseil application", Settings.get_instance().get_text("DuplicateAnalysisView", "nbDuplicatesMessage").format(nb_duplicates))

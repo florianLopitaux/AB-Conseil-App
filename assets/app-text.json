@@ -92,6 +92,10 @@
     "analysisButton": {
       "fr": "Lancer l'analyse",
       "en": "Start to analyse"
+    },
+    "nbDuplicatesMessage": {
+      "fr": "L'analyse a detecte un total de {0} doublons.\nColoration etablie.",
+      "en": "The analysis detected {0} duplicates.\nSet coloration finish."
     }
   },
 

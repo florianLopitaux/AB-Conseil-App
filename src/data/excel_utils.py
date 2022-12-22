@@ -1,5 +1,6 @@
 import os
 from openpyxl import load_workbook
+from openpyxl.styles import PatternFill
 from openpyxl.worksheet.worksheet import Worksheet
 
 
@@ -92,3 +93,31 @@ def get_row_data(excel_file_name: str, parameters: dict[str, tuple[str, str]], r
     # close the excel file and return the parameters and their value
     wb.close()
     return params_value
+
+
+def check_duplicates(excel_file_name: str, letter_column: str, start_row: str, end_row: str) -> int:
+    wb = load_workbook(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", excel_file_name))
+    ws = wb.active
+
+    cells_data = dict()
+    for row in range(start_row, end_row + 1):
+        current_cell_data = ws[letter_column + str(row)].value
+
+        if current_cell_data in cells_data.values():
+            ws[letter_column + str(__get_key_by_value(cells_data, current_cell_data))].fill = PatternFill(start_color="32CD32", fill_type="solid")
+            ws[letter_column + str(row)].fill = PatternFill(start_color="DC143C", fill_type="solid")
+
+        else:
+            cells_data[row] = current_cell_data
+
+    wb.save(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", excel_file_name))
+    wb.close()
+    return end_row + 1 - start_row - len(cells_data)
+
+
+def __get_key_by_value(dictionary: dict[int, str], value: str) -> int or None:
+    for key, current_value in dictionary.items():
+        if value == current_value:
+            return key
+    
+    return None
