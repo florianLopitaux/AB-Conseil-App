@@ -96,6 +96,27 @@ def get_row_data(excel_file_name: str, parameters: dict[str, tuple[str, str]], r
 
 
 def check_duplicates(excel_file_name: str, letter_column: str, start_row: str, end_row: str) -> int:
+    """
+    SUMMARY
+    -------
+    This function check duplicates of a column in the excel file passed as parameter.
+    It color the cell duplicates by red or green according to the order. 
+
+    ARGUMENTS
+    ---------
+        - excel_file_name : str
+            The name of the excel file.
+        - letter_column : str
+            The letter of the cell column in the excel file serving as abscissa.
+        - start_row : str
+            The first row to check.
+        - end_row : str
+            The last row to check.
+
+    RETURNS
+    -------
+    int: The number of duplicates found.
+    """
     wb = load_workbook(os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets", excel_file_name))
     ws = wb.active
 
@@ -116,6 +137,22 @@ def check_duplicates(excel_file_name: str, letter_column: str, start_row: str, e
 
 
 def __get_key_by_value(dictionary: dict[int, str], value: str) -> int or None:
+    """
+    SUMMARY
+    -------
+    This private function allows to get a key of a dictionnary with it value.
+
+    ARGUMENTS
+    ---------
+        - dictionary : dict[int, str]
+            The python dictionnary that we want get the key.
+        value : str
+            The value of the key corresponding.
+
+    RETURNS
+    -------
+    int or None: The key of the value in the dictionnary or None if we doesn't have a key associated to the value.
+    """
     for key, current_value in dictionary.items():
         if value == current_value:
             return key
