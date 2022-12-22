@@ -9,8 +9,29 @@ from gui.generic_gui import clear_frame, create_red_button
 
 
 class DuplicateAnalysisView(customtkinter.CTkFrame):
+    """
+    SUMMARY
+    -------
+    This class is the frame that manage all user interface to analysis duplicates in an excel file.
+
+    METHODS
+    -------
+        CONSTRUCTOR
+        -----------
+        - DuplicateAnalysisView(app: customtkinter.CTk)
+    """
     # CONSTRUCTOR
-    def __init__(self, app: customtkinter.CTk) -> None:
+    def __init__(self, app: customtkinter.CTk):
+        """
+        SUMMARY
+        -------
+        This constructor builds the frame and all widgets of the view.
+
+        ARGUMENTS
+        ---------
+            - app : customtkinter.CTk
+                The window of the application.
+        """
         super().__init__(master=app)
 
         self.__app = app
@@ -75,14 +96,26 @@ class DuplicateAnalysisView(customtkinter.CTkFrame):
 
     
     
-    # BUTTON FUNCTION
+    # BUTTONS FUNCTION
     def __command_back(self) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'back to menu' button when it pressed.
+        It destroy this current view and rebuild a new home view.
+        """
         self.__back_button.destroy()
         clear_frame(self)
         self.__app.change_view('HOME')
 
 
     def __command_analysis(self) -> None:
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'analysis' button when it pressed.
+        It start the analysis of the duplicates in the excel file.
+        """
         if not check_file(self.__excel_file_combo_box.get()):
             messagebox.showerror("AB Conseil application error", Settings.get_instance().get_text("MessageBoxError", "excelFileExists").format(self.self.__excel_file_combo_box.get()))
             return None
