@@ -4,6 +4,10 @@
       "fr": "Utiliser le logiciel",
       "en": "Use app"
     },
+    "duplicateAnalysisButton": {
+      "fr": "Analyser les doublons",
+      "en": "Duplicate Analysis"
+    },
     "settingsButton": {
       "fr": "Options",
       "en": "Settings"
@@ -61,6 +65,37 @@
     "validateButton": {
       "fr": "Valider",
       "en": "Validate"
+    }
+  },
+
+  "DuplicateAnalysisView": {
+    "fileLabel": {
+      "fr": "fichier excel :",
+      "en": "excel file :"
+    },
+    "letterColumnLabel": {
+      "fr": "Lettre de la colonne :",
+      "en": "Column letter :"
+    },
+    "firstRowLabel": {
+      "fr": "Premiere ligne :",
+      "en": "First row :"
+    },
+    "lastRowLabel": {
+      "fr": "Derniere ligne :",
+      "en": "Last row"
+    },
+    "backButton": {
+      "fr": "Revenir au menu",
+      "en": "Back to Menu"
+    },
+    "analysisButton": {
+      "fr": "Lancer l'analyse",
+      "en": "Start to analyse"
+    },
+    "nbDuplicatesMessage": {
+      "fr": "L'analyse a detecte un total de {0} doublons.\nColoration etablie.",
+      "en": "The analysis detected {0} duplicates.\nSet coloration finish."
     }
   },
 
