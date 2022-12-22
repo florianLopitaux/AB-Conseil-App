@@ -33,12 +33,11 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
         if Settings.get_instance().get_phone_format() == "06":
             phone_number = "+33" + phone_number[1:]
 
-        # send message on whatsapp
-        pywhats.sendwhatmsg_instantly(phone_number, final_message, tab_close=True)
-
         # wait 15 seconds for the first message to the user may have to scan the qr-code and log in.
         if (row == phone_number_parameter[1]):
-            time.sleep(15)
+            pywhats.sendwhatmsg_instantly(phone_number, final_message, wait_time=30, tab_close=True)
+        else:
+            pywhats.sendwhatmsg_instantly(phone_number, final_message, wait_time=8, tab_close=True)
 
 
 def get_all_messages_parameters(message_crypted: str) -> list[str]:
