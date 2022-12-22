@@ -87,7 +87,14 @@ class HomeView(customtkinter.CTkFrame):
 
 
     def __command_duplicate(self) -> None:
-        pass
+        """
+        SUMMARY
+        -------
+        This private method is the function linked with the 'duplicate analysis' button when it pressed.
+        It clear the currently view and change to the duplicate analysis view.
+        """
+        clear_frame(self)
+        self.__app.change_view('DUPLICATE-ANALYSIS')
 
 
     def __command_settings(self) -> None:

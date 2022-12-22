@@ -3,6 +3,7 @@ import customtkinter
 from data.settings import Settings
 from gui.home_view import HomeView
 from gui.drafting_advertising_view import DraftingAdvertisingView
+from gui.duplicate_analysis_view import DuplicateAnalysisView
 
 
 
@@ -46,7 +47,7 @@ class App(customtkinter.CTk):
         SUMMARY
         -------
         This method change the application view in terms of the view name that we passed as parameter.
-        The name accepted are : 'HOME' and 'DRAFT-ADVERTISE'.
+        The name accepted are : 'HOME', 'DRAFT-ADVERTISE' and 'DUPLICATE-ANALYSIS'.
 
         ARGUMENTS
         ---------
@@ -58,6 +59,8 @@ class App(customtkinter.CTk):
                 self.__view = HomeView(self)
             case "DRAFT-ADVERTISE":
                 self.__view = DraftingAdvertisingView(self)
+            case "DUPLICATE-ANALYSIS":
+                self.__view = DuplicateAnalysisView(self)
 
 
     def run(self) -> None:
