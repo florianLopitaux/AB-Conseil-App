@@ -68,6 +68,33 @@
     }
   },
 
+  "DuplicateAnalysisView": {
+    "fileLabel": {
+      "fr": "fichier excel :",
+      "en": "excel file :"
+    },
+    "letterColumnLabel": {
+      "fr": "Lettre de la colonne :",
+      "en": "Column letter :"
+    },
+    "firstRowLabel": {
+      "fr": "Premiere ligne :",
+      "en": "First row :"
+    },
+    "lastRowLabel": {
+      "fr": "Derniere ligne :",
+      "en": "Last row"
+    },
+    "backButton": {
+      "fr": "Revenir au menu",
+      "en": "Back to Menu"
+    },
+    "analysisButton": {
+      "fr": "Lancer l'analyse",
+      "en": "Start to analyse"
+    }
+  },
+
   "PopUpParameter": {
     "parameterNameLabel": {
       "fr": "Nom",
