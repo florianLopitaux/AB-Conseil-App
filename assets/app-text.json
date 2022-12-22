@@ -4,6 +4,10 @@
       "fr": "Utiliser le logiciel",
       "en": "Use app"
     },
+    "duplicateAnalysisButton": {
+      "fr": "Analyser les doublons",
+      "en": "Duplicate Analysis"
+    },
     "settingsButton": {
       "fr": "Options",
       "en": "Settings"

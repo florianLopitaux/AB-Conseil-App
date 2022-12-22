@@ -58,7 +58,11 @@ class HomeView(customtkinter.CTkFrame):
 
         button_use_app = customtkinter.CTkButton(master=self.__container, command=self.__command_use_app,
                                                  text=Settings.get_instance().get_text("HomeView", "useAppButton"))
-        button_use_app.pack(pady=(50, 30))
+        button_use_app.pack(pady=(50, 10))
+
+        button_duplicate_analysis = customtkinter.CTkButton(master=self.__container, command=self.__command_duplicate,
+                                                            text=Settings.get_instance().get_text("HomeView", "duplicateAnalysisButton"))
+        button_duplicate_analysis.pack(pady=(10, 30))
 
         button_settings = customtkinter.CTkButton(master=self.__container, command=self.__command_settings,
                                                   text=Settings.get_instance().get_text("HomeView", "settingsButton"))
@@ -80,6 +84,10 @@ class HomeView(customtkinter.CTkFrame):
         """
         clear_frame(self)
         self.__app.change_view('DRAFT-ADVERTISE')
+
+
+    def __command_duplicate(self) -> None:
+        pass
 
 
     def __command_settings(self) -> None:
