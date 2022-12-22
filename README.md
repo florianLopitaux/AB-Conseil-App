@@ -38,3 +38,5 @@ Contributors list :
 * 1.0 (20/12/2022) - First release !
     * 1.1 (21/12/2022) - update version<br>
         Add language feature with english and french software support.
+    * 1.2 (23/12/2022) - update version<br>
+        Implements new feature to analysis an excel file and found duplicates + reduce time between each Whatsapp messages
