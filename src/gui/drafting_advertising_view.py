@@ -143,7 +143,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
         """
         self.__excel_file_combo_box = customtkinter.CTkComboBox(master=self, values=[file for file in os.listdir(
             os.path.join(os.path.realpath(os.path.dirname(__file__)), "..", "..", "assets"))
-            if (".xlsx" in file or ".xls" in file)])
+            if ".xls" in file])
 
         self.__excel_file_combo_box.set("")
         self.__excel_file_combo_box.grid(row=0, column=1, columnspan=2, sticky="ew", padx=(0, 30), pady=(30, 15))
@@ -219,7 +219,7 @@ class DraftingAdvertisingView(customtkinter.CTkFrame):
             messagebox.showerror("AB Conseil application error !", Settings.get_instance().get_text("MessageBoxError", "excelFileExists").format(self.get_excel_file()))
             return None
 
-        if "xls" not in self.get_excel_file():
+        if ".xls" not in self.get_excel_file():
             messagebox.showerror("AB Conseil application error !", Settings.get_instance().get_text("MessageBoxError", "fileNotAnExcelFile").format(self.get_excel_file()))
             return None
         
