@@ -1,5 +1,8 @@
 import time
-import pywhatkit.whats as pywhats
+import pyautogui
+import webbrowser
+from platform import system
+from urllib.parse import quote
 import customtkinter
 
 from data.settings import Settings
@@ -22,6 +25,16 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
             (letter phone column => (first row, last row))
     """
 
+    # open whatsapp for user to login by scanning qr-code. (wait 30s)
+    try:
+        webbrowser.open("https://web.whatsapp.com")
+        time.sleep(30)
+    except webbrowser.Error:
+        return
+
+    # close tab window for user to login
+    __close_tab()
+
     # for each line in the excel file
     for row in range(phone_number_parameter[1], phone_number_parameter[2] + 1):
         final_message = __decrypted_message(view.get_excel_file(), view.get_message(), view.get_parameters(), row)
@@ -33,11 +46,20 @@ def launch_messages_wave(view: customtkinter.CTk, phone_number_parameter: tuple[
         if Settings.get_instance().get_phone_format() == "06":
             phone_number = "+33" + phone_number[1:]
 
-        # wait 15 seconds for the first message to the user may have to scan the qr-code and log in.
-        if (row == phone_number_parameter[1]):
-            pywhats.sendwhatmsg_instantly(phone_number, final_message, wait_time=30, tab_close=True)
-        else:
-            pywhats.sendwhatmsg_instantly(phone_number, final_message, wait_time=8, tab_close=True)
+        # open Whatsapp and wait 9s to allow time to load the page
+        webbrowser.open(f"https://web.whatsapp.com/send?phone={phone_number}&text={quote(final_message)}")
+        time.sleep(9)
+
+        # click on screen center
+        width, height = pyautogui.size()
+        pyautogui.click(width / 2, height / 2)
+        time.sleep(1)
+
+        # press enter to send the message
+        pyautogui.press("enter")
+        
+        # close the window 2s after
+        __close_tab()
 
 
 def get_all_messages_parameters(message_crypted: str) -> list[str]:
@@ -121,3 +143,19 @@ def __decrypted_message(excel_file_name: str, message_crypted: str, parameters: 
             final_message += message_crypted[index_brackets_close[-1] + 1:]
 
     return final_message
+
+
+def __close_tab(wait_time: int = 2) -> None:
+    """
+    SUMMARY
+    -------
+    Closes the Currently Opened Browser Tab
+    """
+    time.sleep(wait_time)
+
+    if system().lower() in ("windows", "linux"):
+        pyautogui.hotkey("ctrl", "w")
+    elif system().lower() == "darwin":
+        pyautogui.hotkey("command", "w")
+    else:
+        return None
